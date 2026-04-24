@@ -1,0 +1,119 @@
+/* ===================================================
+   CyberCharacter — styles
+   =================================================== */
+
+/* ── Container ── */
+.cyber-character {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 45;
+  width: 90px;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: drop-shadow(0 0 14px rgba(0, 245, 255, 0.35));
+}
+
+.cyber-character:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 22px rgba(0, 245, 255, 0.55));
+}
+
+/* ── Idle float ── */
+@keyframes idleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.cyber-character__body {
+  animation: idleFloat 3.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* ── Neon glow ring ── */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.12); }
+}
+
+.cyber-character__glow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,245,255,0.4) 0%, transparent 70%);
+  animation: pulseGlow 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Glitch effect (triggered on click) ── */
+@keyframes glitch {
+  0%       { transform: translate(0); filter: none; }
+  10%      { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  20%      { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+  30%      { transform: translate(-1px, 2px); filter: none; }
+  40%      { transform: translate(1px, -2px); filter: hue-rotate(180deg); }
+  50%      { transform: translate(0); filter: none; }
+  100%     { transform: translate(0); filter: none; }
+}
+
+.cyber-character--glitching .cyber-character__body {
+  animation: glitch 0.5s steps(4) forwards, idleFloat 3.5s ease-in-out infinite;
+}
+
+/* ── Scan line overlay ── */
+@keyframes scanLines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 10px; }
+}
+
+.cyber-character__scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0,245,255,0.15) 2px,
+    rgba(0,245,255,0.15) 4px
+  );
+  animation: scanLines 0.8s linear infinite;
+  mix-blend-mode: overlay;
+}
+
+/* ── Speech bubble ── */
+@keyframes bubblePop {
+  0%   { opacity: 0; transform: scale(0.8) translateY(4px); }
+  20%  { opacity: 1; transform: scale(1.02) translateY(0); }
+  90%  { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.95) translateY(-4px); }
+}
+
+.cyber-character__bubble {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 10px;
+  padding: 8px 14px;
+  border-radius: 8px 8px 2px 8px;
+  background: rgba(8, 11, 20, 0.92);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  color: rgba(0, 245, 255, 0.9);
+  font-size: 0.65rem;
+  font-family: var(--font-orbitron-var), monospace;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: bubblePop 2.5s ease-out forwards;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.15);
+}
+
+/* ── Eye tracking ── */
+.cyber-character__eye {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

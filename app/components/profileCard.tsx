@@ -1,11 +1,24 @@
 export default function ProfileCard() {
   return (
-    <div className="relative lg:w-85 rounded-3xl bg-white/80 backdrop-blur-xl p-8 shadow-[0_30px_80px_rgba(0,0,0,0.18)] ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(0,0,0,0.22)]">
-      {/* top accent */}
-      <div className="absolute left-7 right-7 top-4 h-1.5 rounded-full bg-linear-to-r from-orange-400 via-orange-500 to-orange-300" />
+    <div
+      className="relative lg:w-85 rounded-3xl backdrop-blur-xl p-8 transition hover:-translate-y-1"
+      style={{
+        background: "rgba(8, 11, 20, 0.80)",
+        border: "1px solid rgba(0, 245, 255, 0.15)",
+        boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,245,255,0.04), inset 0 1px 0 rgba(0,245,255,0.08)",
+      }}
+    >
+      {/* top accent — cyan to magenta gradient */}
+      <div
+        className="absolute left-7 right-7 top-4 h-1.5 rounded-full"
+        style={{ background: "linear-gradient(90deg, #00f5ff, #8b5cf6, #ff00c8)" }}
+      />
 
       {/* Image */}
-      <div className="mt-6 mx-auto w-full overflow-hidden rounded-2xl ring-1 ring-black/10">
+      <div
+        className="mt-6 mx-auto w-full overflow-hidden rounded-2xl"
+        style={{ border: "1px solid rgba(0,245,255,0.12)" }}
+      >
         <div className="relative">
           <img
             src="https://wallpapercave.com/wp/wp11058311.jpg"
@@ -13,11 +26,21 @@ export default function ProfileCard() {
             className="h-56 w-full object-cover"
           />
           {/* image overlay for depth */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/0 to-black/0" />
           {/* badge */}
-          <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-black shadow-sm">
-            <span className="grid h-6 w-6 place-items-center rounded-full bg-orange-500 text-white">
-              🔥
+          <div
+            className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-semibold"
+            style={{
+              background: "rgba(8,11,20,0.9)",
+              border: "1px solid rgba(0,245,255,0.2)",
+              color: "#00f5ff",
+            }}
+          >
+            <span
+              className="grid h-6 w-6 place-items-center rounded-full text-white text-xs"
+              style={{ background: "linear-gradient(135deg, #00f5ff, #8b5cf6)" }}
+            >
+              ⚡
             </span>
           </div>
         </div>
@@ -25,17 +48,22 @@ export default function ProfileCard() {
 
       {/* Name + role */}
       <div className="mt-5 text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight text-black">
+        <h2
+          className="text-3xl font-extrabold tracking-tight text-white"
+          style={{ fontFamily: "var(--font-orbitron-var), var(--font-space-grotesk), sans-serif" }}
+        >
           Anuj Rathee
         </h2>
-        <p className="mt-1 text-sm font-medium text-black/60">
-          Software Engineer • Full-stack Developer
+        <p className="mt-1 text-sm font-medium text-white/50">
+          Software Engineer •{" "}
+          <span className="text-cyan-400/80">Full-stack Developer</span>
         </p>
       </div>
 
       {/* Description */}
-      <p className="mt-4 text-center text-sm leading-relaxed text-black/60">
-        Software &amp; Systems Engineering student building real-world full-stack applications with React, Next.js, and PostgreSQL, with hands-on industry experience.</p>
+      <p className="mt-4 text-center text-sm leading-relaxed text-white/45">
+        Software &amp; Systems Engineering student building real-world full-stack applications with React, Next.js, and PostgreSQL, with hands-on industry experience.
+      </p>
 
       {/* Social links */}
       <div className="mt-8 flex items-center justify-center gap-5">
@@ -44,7 +72,10 @@ export default function ProfileCard() {
           href="https://github.com/Anujrathee7"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black/40 hover:text-black transition-colors duration-200"
+          className="text-white/35 transition-all duration-200 hover:text-cyan-400"
+          style={{ filter: "none" }}
+          onMouseEnter={(e) => (e.currentTarget.style.filter = "drop-shadow(0 0 6px rgba(0,245,255,0.7))")}
+          onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
           aria-label="GitHub"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -56,7 +87,7 @@ export default function ProfileCard() {
           href="https://www.linkedin.com/in/anuj-rathee-061401279/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black/40 hover:text-[#0A66C2] transition-colors duration-200"
+          className="text-white/35 transition-all duration-200 hover:text-[#0A66C2]"
           aria-label="LinkedIn"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -68,7 +99,10 @@ export default function ProfileCard() {
           href="https://mail.google.com/mail/?view=cm&to=ratheeanuj2005@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black/40 hover:text-orange-500 transition-colors duration-200"
+          className="text-white/35 transition-all duration-200 hover:text-fuchsia-400"
+          style={{ filter: "none" }}
+          onMouseEnter={(e) => (e.currentTarget.style.filter = "drop-shadow(0 0 6px rgba(255,0,200,0.7))")}
+          onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
           aria-label="Email"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -77,7 +111,6 @@ export default function ProfileCard() {
           </svg>
         </a>
       </div>
-
     </div>
   );
 }

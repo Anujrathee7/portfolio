@@ -1,6 +1,5 @@
 "use client";
 
-import ProfileCard from "./profileCard";
 import { motion } from "motion/react";
 
 const courses = [
@@ -14,122 +13,139 @@ const courses = [
   "Software Testing & Quality",
 ];
 
-export default function EducationLayout() {
+export default function EducationSection() {
   return (
-    <div className="lg:h-full lg:flex lg:flex-row lg:items-start lg:justify-start lg:m-0 flex flex-col items-center justify-center gap-8">
-      {/* Left side */}
-      <aside className="lg:w-105 w-[80%] shrink-0 px-6 lg:px-8 lg:ml-30">
-        <ProfileCard />
-      </aside>
-
-      {/* Right side */}
-      <section className="w-full px-4 sm:px-6 lg:flex-1 lg:h-full lg:pr-2 lg:overflow-y-auto lg:w-[70%] custom-scroll lg:mr-10 lg:pt-2">
-
+    <section id="education" className="relative z-10 py-28 px-6 md:px-16 lg:px-32">
+      <div className="relative max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.65 }}
+          className="mb-14"
         >
-          <p className="text-xs tracking-[0.2em] uppercase text-orange-400/80 font-medium mb-5 text-center lg:text-left">
+          <p
+            className="text-xs tracking-[0.3em] uppercase font-medium mb-4"
+            style={{ color: "rgba(0,245,255,0.7)", fontFamily: "var(--font-orbitron-var), sans-serif" }}
+          >
             Education
           </p>
-          <h1
+          <h2
             style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
-            className="text-[clamp(2.2rem,6vw,3.8rem)] font-bold leading-none tracking-tight text-white text-center lg:text-left"
+            className="text-[clamp(2.4rem,5vw,4rem)] font-bold leading-none tracking-tight text-white"
           >
             LUT University
             <br />
-            <span className="text-white/20">Lahti, Finland</span>
-          </h1>
+            <span
+              style={{
+                background: "linear-gradient(90deg, #00f5ff, #8b5cf6, #ff00c8)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                opacity: 0.4,
+              }}
+            >
+              Lahti, Finland
+            </span>
+          </h2>
         </motion.div>
 
-        <div className="mt-10 lg:w-[85%]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
+          <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-white/60 text-base leading-relaxed">
+            Bachelor&apos;s degree in{" "}
+            <span className="text-white/80 font-medium">Software &amp; Systems Engineering</span>
+          </p>
+          <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-white/35 text-sm mt-1">
+            August 2023 – Present
+          </p>
+        </motion.div>
 
-          {/* Degree block */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.45 }}
-            className="mb-8"
-          >
-            <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-white/70 text-base leading-relaxed">
-              Bachelor&apos;s degree in{" "}
-              <span className="text-white/85 font-medium">Software &amp; Systems Engineering</span>
-            </p>
-            <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-white/45 text-sm mt-1">
-              August 2023 – Present
-            </p>
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.45, delay: 0.1 }}
-            className="flex flex-wrap gap-0 border-t border-white/8 mb-10"
-          >
-            {[
-              { label: "GPA", value: "4.65 / 5" },
-              { label: "Credits", value: "192 ECTS" },
-              { label: "Course avg.", value: "5 / 5" },
-            ].map((stat, i) => (
-              <div key={i} className="flex-1 min-w-[100px] py-5 px-4 border-b border-white/8 first:pl-0">
-                <div
-                  style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
-                  className="text-2xl font-bold text-white"
-                >
-                  {stat.value}
-                </div>
-                <div style={{ fontFamily: "var(--font-inter), sans-serif" }} className="mt-0.5 text-[11px] text-white/50 uppercase tracking-wider">
-                  {stat.label}
-                </div>
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap gap-0 mb-14"
+          style={{ borderTop: "1px solid rgba(0,245,255,0.08)" }}
+        >
+          {[
+            { label: "GPA", value: "4.65 / 5" },
+            { label: "Credits", value: "192 ECTS" },
+            { label: "Course avg.", value: "5 / 5" },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08 + 0.2 }}
+              className="flex-1 min-w-[120px] py-6 px-4 first:pl-0"
+              style={{ borderBottom: "1px solid rgba(0,245,255,0.06)" }}
+            >
+              <div
+                style={{ fontFamily: "var(--font-orbitron-var), var(--font-space-grotesk), sans-serif", color: "#00f5ff" }}
+                className="text-2xl md:text-3xl font-bold"
+              >
+                {stat.value}
               </div>
-            ))}
-          </motion.div>
+              <div style={{ fontFamily: "var(--font-inter), sans-serif" }} className="mt-1 text-[11px] text-white/40 uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Courses */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+        {/* Courses */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p
+            style={{ fontFamily: "var(--font-inter), sans-serif", color: "rgba(0,245,255,0.4)" }}
+            className="text-xs uppercase tracking-widest mb-5"
           >
-            <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-xs text-white/40 uppercase tracking-widest mb-4">
-              Courses completed
-            </p>
-            <div className="flex flex-col gap-0">
-              {courses.map((course, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="group flex items-center justify-between border-t border-white/6 py-3 hover:border-orange-500/20 transition-colors duration-200"
+            Courses completed
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+            {courses.map((course, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -12 : 12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.35 }}
+                className="group flex items-center justify-between py-3 pr-4 transition-colors duration-200"
+                style={{ borderTop: "1px solid rgba(0,245,255,0.05)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.22)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.05)"; }}
+              >
+                <span
+                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  className="text-sm text-white/55 group-hover:text-white/85 transition-colors duration-200"
                 >
-                  <span
-                    style={{ fontFamily: "var(--font-inter), sans-serif" }}
-                    className="text-sm text-white/65 group-hover:text-white/90 transition-colors duration-200"
-                  >
-                    {course}
-                  </span>
-                  <span
-                    style={{ fontFamily: "var(--font-inter), sans-serif" }}
-                    className="text-xs font-semibold text-emerald-400/70 group-hover:text-emerald-400 transition-colors duration-200 tabular-nums ml-6"
-                  >
-                    5 / 5
-                  </span>
-                </motion.div>
-              ))}
-              <div className="border-t border-white/6" />
-            </div>
-          </motion.div>
-
-        </div>
-
-      </section>
-    </div>
+                  {course}
+                </span>
+                <span
+                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  className="text-xs font-semibold text-emerald-400/60 group-hover:text-emerald-400 transition-colors duration-200 tabular-nums ml-4"
+                >
+                  5 / 5
+                </span>
+              </motion.div>
+            ))}
+          </div>
+          <div style={{ borderTop: "1px solid rgba(0,245,255,0.05)" }} className="mt-0 sm:col-span-2" />
+        </motion.div>
+      </div>
+    </section>
   );
 }
