@@ -72,7 +72,7 @@ export default function EducationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap gap-0 mb-14"
+          className="grid grid-cols-2 md:flex md:flex-wrap gap-0 mb-14"
           style={{ borderTop: "1px solid rgba(0,245,255,0.08)" }}
         >
           {[
@@ -86,16 +86,15 @@ export default function EducationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 + 0.2 }}
-              className="flex-1 min-w-[120px] py-6 px-4 first:pl-0"
-              style={{ borderBottom: "1px solid rgba(0,245,255,0.06)" }}
+              className={`py-6 px-4 first:pl-0 border-b border-[rgba(0,245,255,0.06)] ${i === 2 ? "col-span-2 md:col-span-1" : ""}`}
             >
               <div
                 style={{ fontFamily: "var(--font-orbitron-var), var(--font-space-grotesk), sans-serif", color: "#00f5ff" }}
-                className="text-2xl md:text-3xl font-bold"
+                className="text-xl md:text-3xl font-bold"
               >
                 {stat.value}
               </div>
-              <div style={{ fontFamily: "var(--font-inter), sans-serif" }} className="mt-1 text-[11px] text-white/40 uppercase tracking-wider">
+              <div style={{ fontFamily: "var(--font-inter), sans-serif" }} className="mt-1 text-[10px] md:text-[11px] text-white/40 uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>
@@ -111,7 +110,7 @@ export default function EducationSection() {
         >
           <p
             style={{ fontFamily: "var(--font-inter), sans-serif", color: "rgba(0,245,255,0.4)" }}
-            className="text-xs uppercase tracking-widest mb-5"
+            className="text-[10px] md:text-xs uppercase tracking-widest mb-5"
           >
             Courses completed
           </p>
@@ -123,20 +122,20 @@ export default function EducationSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.35 }}
-                className="group flex items-center justify-between py-3 pr-4 transition-colors duration-200"
+                className="group flex items-center justify-between py-3 md:pr-4 transition-colors duration-200"
                 style={{ borderTop: "1px solid rgba(0,245,255,0.05)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.22)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.05)"; }}
               >
                 <span
                   style={{ fontFamily: "var(--font-inter), sans-serif" }}
-                  className="text-sm text-white/55 group-hover:text-white/85 transition-colors duration-200"
+                  className="text-xs md:text-sm text-white/55 group-hover:text-white/85 transition-colors duration-200"
                 >
                   {course}
                 </span>
                 <span
                   style={{ fontFamily: "var(--font-inter), sans-serif" }}
-                  className="text-xs font-semibold text-emerald-400/60 group-hover:text-emerald-400 transition-colors duration-200 tabular-nums ml-4"
+                  className="text-[10px] md:text-xs font-semibold text-emerald-400/60 group-hover:text-emerald-400 transition-colors duration-200 tabular-nums ml-4"
                 >
                   5 / 5
                 </span>

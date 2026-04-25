@@ -55,12 +55,12 @@ export default function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="group flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-12 py-6 transition-all duration-300"
+              className="group flex flex-col md:flex-row md:items-start gap-4 md:gap-12 py-6 transition-all duration-300"
               style={{ borderTop: "1px solid rgba(0,245,255,0.06)" }}
               onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.25)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = "rgba(0,245,255,0.06)"; }}
             >
-              <div className="sm:w-40 shrink-0">
+              <div className="md:w-40 shrink-0">
                 <span
                   style={{ fontFamily: "var(--font-orbitron-var), sans-serif", color: "rgba(0,245,255,0.4)", fontSize: "0.6rem" }}
                   className="uppercase tracking-widest group-hover:text-cyan-400 transition-colors duration-300"
@@ -69,7 +69,7 @@ export default function SkillsSection() {
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <div className="flex flex-wrap gap-x-6 gap-y-3 md:gap-y-2">
                 {group.skills.map((skill, j) => (
                   <motion.span
                     key={j}

@@ -97,22 +97,22 @@ export default function ExperienceSection() {
                 />
 
                 <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <span style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-xs text-white/40 tabular-nums">
+                  <span style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-[10px] md:text-xs text-white/40 tabular-nums">
                     {exp.period}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-white/15 hidden sm:block" />
-                  <span style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-xs text-white/30 hidden sm:block">
+                  <span style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-[10px] md:text-xs text-white/30">
                     {exp.location}
                   </span>
                 </div>
 
                 <h3
                   style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
-                  className="text-xl md:text-2xl font-semibold text-white group-hover:text-cyan-200 transition-colors duration-300"
+                  className="text-lg md:text-2xl font-semibold text-white group-hover:text-cyan-200 transition-colors duration-300"
                 >
                   {exp.company}
                 </h3>
-                <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-sm text-white/45 mt-0.5 mb-3">
+                <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-xs md:text-sm text-white/45 mt-0.5 mb-3">
                   {exp.role}
                 </p>
                 <p style={{ fontFamily: "var(--font-inter), sans-serif" }} className="text-white/55 text-sm leading-[1.85] max-w-2xl">
