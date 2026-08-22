@@ -1,41 +1,89 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Orbitron } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Azeret_Mono, Newsreader } from "next/font/google";
+import { site } from "./site";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+// Two voices, two faces, and no italics in either. Newsreader is the
+// human one — everything written in the first person. Azeret is the
+// machine one: the nameplate, the labels, the dates, the stacks.
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  weight: ["400"],
+  variable: "--font-newsreader",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+// 400 sets the dates, 500 the nameplate and the labels — small
+// uppercase mono needs the extra weight to hold at 11px.
+const azeret = Azeret_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
-
-const orbitron = Orbitron({
-  variable: "--font-orbitron-var",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  weight: ["400", "500"],
+  variable: "--font-azeret",
 });
 
 export const metadata: Metadata = {
-  title: "Anuj Rathee — Software Engineer",
-  description: "Portfolio of Anuj Rathee, Software & Systems Engineering student and full-stack developer.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.title,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  alternates: { canonical: "/" },
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  openGraph: {
+    type: "profile",
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    locale: site.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  // One theme, so one colour. Matches --color-paper.
+  themeColor: "#0b0f14",
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  jobTitle: site.jobTitle,
+  worksFor: { "@type": "Organization", name: site.worksFor },
+  alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lahti",
+    addressCountry: "FI",
+  },
+  sameAs: site.sameAs,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${orbitron.variable} antialiased`}
-      >
+    <html lang="en" className={`${newsreader.variable} ${azeret.variable}`}>
+      <body>
         {children}
+        <script
+          type="application/ld+json"
+          // Static object, no user input. Stringified once at build.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
       </body>
     </html>
   );

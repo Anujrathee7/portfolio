@@ -1,122 +1,815 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Design tokens.
+
+   The page is an instrument, not a document. Every project here is
+   about making an exact quantity visible where there was a vague
+   description, so the design is built from that: a cold instrument
+   ground, a single signal colour, and a scale down the left of every
+   list.
+   --------------------------------------------------------------- */
+@theme {
+  /* Six tones and one signal. The ground is blue-black rather than
+     neutral black — it reads as glass, and it lets the warm ink sit
+     against it instead of on it. There is no light variant. */
+  --color-paper: #0b0f14; /* instrument ground */
+  --color-ink: #e8e6e1; /* headings, display. 15.41:1 */
+  --color-body: #a3aab4; /* prose. 8.21:1 */
+  --color-muted: #818b96; /* meta, labels, captions. 5.55:1 */
+  --color-rule: #202833; /* the scale, borders */
+  --color-hairline: #586373; /* link underlines at rest. 3.15:1 */
+
+  /* Amber means one thing and only one thing: now. The current role,
+     the current degree, the section you are currently reading. If it
+     ever appears on a link or a button, the system has broken. */
+  --color-signal: #e8a33d; /* 8.91:1 */
+
+  /* Mono is the machine voice: the nameplate, labels, dates, stacks —
+     anything the page measures or classifies. Serif is the human
+     voice: anything written in the first person. */
+  --font-mono: var(--font-azeret), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-serif: var(--font-newsreader), Iowan Old Style, Palatino, Georgia,
+    serif;
+
+  /* Six steps, ~1.6x apart, so every gap is unmistakably a different
+     gap from its neighbours. */
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1.25rem;
+  --space-m: 2rem;
+  --space-l: 3.25rem;
+  --space-xl: 5.25rem;
+}
+
+/* Geometry shared by the scale and everything that aligns to it. One
+   place to change the gutter, so the labels, the dates, the axis and
+   the markers can never drift apart. */
 :root {
-  --background: #080b14;
-  --foreground: #e2e8f0;
-  --cyan: #00f5ff;
-  --magenta: #ff00c8;
-  --purple: #8b5cf6;
-  --neon-blue: #3b82f6;
+  --gutter: 9rem; /* width of the date column */
+  --gutter-gap: 2.25rem; /* space between it and the body */
+  --axis: 1.125rem; /* axis offset into that gap, from the body edge */
+  --row-pad: 1.5rem; /* half the space between two entries */
+  --dot-y: 0.6rem; /* marker centre, from the top of the row body */
+  --dot: 7px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
-  --font-orbitron: var(--font-orbitron-var), system-ui, sans-serif;
-}
-
-/* =========================
+/* ---------------------------------------------------------------
    Base
-   ========================= */
+   --------------------------------------------------------------- */
 html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), var(--font-space-grotesk), system-ui, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.66;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+@media (min-width: 40rem) {
+  body {
+    font-size: 1.125rem;
+  }
 }
 
-/* =========================
-   Animated Grid Background
-   ========================= */
-.cyber-grid {
-  background-image:
-    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridShift 20s linear infinite;
-}
-
-@keyframes gridShift {
-  0%   { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
-
-/* =========================
-   Neon Glow Utilities
-   ========================= */
-.neon-glow-cyan {
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.4), 0 0 30px rgba(0, 245, 255, 0.15);
-}
-
-.neon-glow-magenta {
-  box-shadow: 0 0 12px rgba(255, 0, 200, 0.4), 0 0 30px rgba(255, 0, 200, 0.15);
-}
-
-.neon-text-cyan {
-  text-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
-}
-
-/* =========================
-   Custom Scrollbar (Scoped)
-   ========================= */
-
-/* Firefox */
-.custom-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 245, 255, 0.2) transparent;
-}
-
-/* Chrome / Edge / Safari */
-.custom-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 245, 255, 0.18);
-  border-radius: 999px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 245, 255, 0.35);
-}
-
-/* =========================
-   Utility: text-balance
-   ========================= */
-.text-balance {
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-ink);
   text-wrap: balance;
 }
 
-/* =========================
-   Neon chip / pill for tags
-   ========================= */
-.cyber-tag {
-  font-size: 0.68rem;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: rgba(0, 245, 255, 0.05);
-  border: 1px solid rgba(0, 245, 255, 0.18);
-  color: rgba(0, 245, 255, 0.65);
-  transition: all 0.2s ease;
-  cursor: default;
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-paper);
+}
+
+/* ---------------------------------------------------------------
+   Links. They are the same colour as the text around them, so the
+   underline is the only thing marking them: it has to be genuinely
+   visible at rest, not only on hover. Amber is not available here —
+   it means "now", not "clickable".
+   --------------------------------------------------------------- */
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-hairline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 120ms ease, color 120ms ease;
+}
+
+.link:hover {
+  color: var(--color-ink);
+  text-decoration-color: var(--color-ink);
+}
+
+:where(a, summary, button):focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------
+   Text roles.
+   --------------------------------------------------------------- */
+
+/* The thesis. The largest run of prose on the page and the first thing
+   anyone reads, so it is set at full ink rather than muted. */
+.lede {
+  font-size: 1.375rem;
+  line-height: 1.42;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+@media (min-width: 40rem) {
+  .lede {
+    font-size: 1.75rem;
+    max-width: 24ch;
+  }
+}
+
+@media (min-width: 69rem) {
+  .lede {
+    font-size: 2rem;
+  }
+}
+
+/* 404. Its one column has no rail beside it, so it is centred and
+   given a top margin rather than sitting flush at the top of nothing. */
+.lede-404 {
+  margin-top: var(--space-s);
+  font-weight: 400;
+}
+
+.lede-rest {
+  margin-top: var(--space-s);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  max-width: 48ch;
+}
+
+@media (min-width: 40rem) {
+  .lede-rest {
+    font-size: 1.125rem;
+  }
+}
+
+/* Section labels. Mono, because a section name classifies rather than
+   speaks. The only uppercase on the site apart from the nameplate. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-muted);
+}
+
+/* Tracking adds a trailing space after the last letter, which stops
+   right-aligned text sitting flush. Pull it back. */
+@media (min-width: 48rem) {
+  .band > .label {
+    display: block;
+    width: var(--gutter);
+    margin-right: -0.2em;
+    text-align: right;
+  }
+
+  /* A section with no scale beside it has nothing for a right-aligned
+     label to be flush with, so it keeps the ordinary one. */
+  .band-plain > .label {
+    width: auto;
+    margin-right: 0;
+    text-align: left;
+  }
+}
+
+/* Asides, dates, captions. Small, muted, never italic. */
+.note {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------
+   Shell. A sticky identity rail beside a scrolling column of
+   sections. Below 69rem it is one column and the rail is an
+   ordinary header.
+   --------------------------------------------------------------- */
+.shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .shell {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 69rem) {
+  .shell {
+    display: grid;
+    /* Narrow enough that the rail's own text fills it. The old 22rem
+       column left a column of nothing down the middle of the page. */
+    grid-template-columns: minmax(15rem, 17rem) minmax(0, 42rem);
+    gap: 4.5rem;
+    justify-content: center;
+    padding-inline: 3rem;
+  }
+}
+
+.rail {
+  padding-block: var(--space-l) var(--space-m);
+}
+
+@media (min-width: 69rem) {
+  .rail {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    /* Same top offset as the content column, so the nameplate and the
+       thesis start on the same line. The rail used to be centred in
+       the viewport, which left the two columns unrelated. */
+    padding-block: 5.5rem 3rem;
+    /* A rail taller than the viewport scrolls rather than clipping the
+       contact links off the bottom. */
+    max-height: 100svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    /* Scrolling on one axis makes the other clip too, which would cut
+       the focus ring off the leftmost nav link. The padding gives the
+       ring somewhere to sit and the negative margin puts the text back
+       on the column it was on. */
+    padding-inline: 5px;
+    margin-inline: -5px;
+  }
+}
+
+.content {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-bottom: var(--space-xl);
+  /* Focused by the skip link; it should not draw a ring. */
+  outline: none;
+}
+
+@media (min-width: 69rem) {
+  .content {
+    max-width: none;
+    margin-inline: 0;
+    padding-block: 5.5rem 7rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Rail contents. The nameplate is set in the machine face and the
+   line under it in the human one; that tension is the whole type
+   system stated once, at the top.
+   --------------------------------------------------------------- */
+.nameplate {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 5.2vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.tagline {
+  margin-top: var(--space-s);
+  font-size: 1.25rem;
+  line-height: 1.34;
+  max-width: 20ch;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+@media (min-width: 40rem) {
+  .tagline {
+    font-size: 1.375rem;
+  }
+}
+
+/* Two deliberate lines. As one string it wrapped mid-separator in a
+   17rem column and left the middot hanging off the end of line one. */
+.rail-standfirst {
+  margin-top: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.rail-standfirst span {
+  display: block;
+}
+
+.rail-nav {
+  margin-top: var(--space-m);
+}
+
+/* Narrow screens: one row of labels, each with the same marker the
+   scale uses, so "you are here" is drawn the same way everywhere. A
+   vertical stack of four cost 300px of masthead before any content. */
+.rail-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.rail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-block: 0.3rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.rail-rule {
+  display: block;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  background: var(--color-paper);
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+  transition: width 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.rail-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.rail-link:hover,
+.rail-link:focus-visible {
+  color: var(--color-ink);
+}
+
+.rail-link:hover .rail-rule {
+  box-shadow: inset 0 0 0 1px var(--color-muted);
+}
+
+.rail-link[data-active] {
+  color: var(--color-ink);
+}
+
+.rail-link[data-active] .rail-rule {
+  background: var(--color-signal);
+  box-shadow: inset 0 0 0 1px var(--color-signal);
+}
+
+/* Once the rail is a column of its own, the marker becomes a rule that
+   grows into the section you are reading. The only moving part on the
+   page, and it moves 1.75rem. */
+@media (min-width: 69rem) {
+  .rail-nav {
+    margin-top: var(--space-l);
+  }
+
+  .rail-contacts {
+    margin-top: var(--space-l);
+  }
+
+  .rail-nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rail-link {
+    gap: 0.9rem;
+  }
+
+  .rail-rule {
+    width: 1.25rem;
+    height: 1px;
+    border-radius: 0;
+    background: currentColor;
+    box-shadow: none;
+  }
+
+  .rail-link:hover .rail-rule {
+    width: 2.25rem;
+    box-shadow: none;
+  }
+
+  .rail-link[data-active] .rail-rule {
+    width: 3rem;
+    background: var(--color-signal);
+    box-shadow: none;
+  }
+}
+
+.rail-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-s);
+  margin-top: var(--space-m);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------
+   Sections
+   --------------------------------------------------------------- */
+.band {
+  padding-block: var(--space-l) 0;
+  scroll-margin-top: 2rem;
+}
+
+@media (min-width: 69rem) {
+  .band {
+    padding-block: var(--space-xl) 0;
+  }
+}
+
+/* The opening carries no label and no top padding: it is the top of
+   the page, and an eyebrow reading "About" above the one line worth
+   reading would be the page apologising for itself. */
+.band-opening {
+  padding-top: 0;
+}
+
+/* Education is a continuation of Experience, not a new subject. It
+   gets a smaller gap above it than a real section break. */
+.band-continues {
+  padding-top: var(--space-m);
+}
+
+@media (min-width: 69rem) {
+  .band-continues {
+    padding-top: var(--space-l);
+  }
+}
+
+.rows {
+  /* Pulled up by one row's padding so the gap under the section label
+     matches the other sections, even though every row now carries its
+     own padding for the scale to run through. */
+  margin-top: calc(var(--space-m) - var(--row-pad));
+}
+
+/* ---------------------------------------------------------------
+   The scale.
+
+   Each list is drawn as an axis with a marker per entry. The dates sit
+   right-aligned against the axis, so the whole left edge of the page —
+   section labels, periods, years — reads as one flush column of
+   readings. Ongoing entries get the amber marker.
+   --------------------------------------------------------------- */
+.row {
+  position: relative;
+  padding-block: var(--row-pad);
+  padding-left: 1.375rem;
+}
+
+/* The axis. One segment per row, and the rows abut, so it draws as a
+   single unbroken line that overshoots the first and last marker by
+   exactly one row's padding. */
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-rule);
+}
+
+.row-body {
+  position: relative;
+}
+
+/* The marker. Hollow by default; filled only when the entry is still
+   running. */
+.row-marker {
+  position: absolute;
+  left: calc(-1.375rem - 0.5px);
+  top: var(--dot-y);
+  width: var(--dot);
+  height: var(--dot);
+  margin: calc(var(--dot) / -2) 0 0 calc(var(--dot) / -2);
+  border-radius: 50%;
+  background: var(--color-paper);
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+  transition: box-shadow 160ms ease;
+}
+
+.row:hover .row-marker {
+  box-shadow: inset 0 0 0 1px var(--color-muted);
+}
+
+.row[data-current] .row-marker {
+  background: var(--color-signal);
+  box-shadow: inset 0 0 0 1px var(--color-signal),
+    0 0 0 3px color-mix(in srgb, var(--color-signal) 16%, transparent);
+}
+
+/* Period sits above the entry on narrow screens and moves out into the
+   gutter, flush against the axis, once there is room for it. */
+.row-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Year, then what the thing is. One line above the entry on mobile;
+   two lines on the scale, because "2026 · Developer tool" does not fit
+   a 9rem gutter and wrapped with the separator left hanging. */
+.row-meta-sub::before {
+  content: " · ";
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --dot-y: 0.72rem;
+  }
+
+  .row-meta-sub {
+    display: block;
+  }
+
+  .row-meta-sub::before {
+    content: none;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: var(--gutter) minmax(0, 1fr);
+    column-gap: var(--gutter-gap);
+    padding-left: 0;
+  }
+
+  .row::before {
+    left: calc(var(--gutter) + var(--gutter-gap) - var(--axis));
+  }
+
+  .row-meta {
+    margin-bottom: 0;
+    margin-right: -0.1em;
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .row-marker {
+    left: calc(var(--axis) * -1 - 0.5px);
+  }
+}
+
+.row-title {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+@media (min-width: 40rem) {
+  .row-title {
+    font-size: 1.1875rem;
+  }
+}
+
+.row-org {
+  color: var(--color-muted);
+}
+
+.row-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.row-link:hover {
+  color: var(--color-ink);
+}
+
+.row-arrow {
+  display: inline-block;
+  margin-left: 0.35em;
+  font-size: 0.78em;
+  color: var(--color-muted);
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.row-link:hover .row-arrow {
+  color: var(--color-ink);
+  transform: translate(0.15em, -0.15em);
+}
+
+.row-note {
+  margin-top: var(--space-2xs);
+  max-width: 54ch;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+.stack li:not(:last-child)::after {
+  content: "·";
+  margin-inline: 0.55em;
+}
+
+/* The one screenshot on the site. A bright plate on a dark page is a
+   deliberate break rather than an oversight, so it gets a frame and a
+   caption instead of being dimmed into the background. */
+.shot {
+  margin-top: var(--space-s);
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-rule);
+  border-radius: 2px;
+}
+
+.shot figcaption {
+  margin-top: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+.work-auth {
+  margin-top: var(--space-m);
+  max-width: 46ch;
+}
+
+@media (min-width: 48rem) {
+  .work-auth {
+    margin-left: calc(var(--gutter) + var(--gutter-gap));
+  }
+}
+
+/* ---------------------------------------------------------------
+   The close. There is no footer, so the last entry on the scale has
+   to be the ending. Its reading is "now" — the same amber the current
+   role carries, for the same reason — which is also the answer to
+   when to write.
+   --------------------------------------------------------------- */
+.row-close {
+  /* The closing line is set larger than a row title, so its marker
+     sits lower to stay on the first line. */
+  --dot-y: 0.94rem;
+}
+
+@media (min-width: 40rem) {
+  .row-close {
+    --dot-y: 1.08rem;
+  }
+}
+
+.outro {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+  max-width: 30ch;
+}
+
+@media (min-width: 40rem) {
+  .outro {
+    font-size: 1.4375rem;
+  }
+}
+
+.outro-mail {
+  margin-top: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   letter-spacing: 0.02em;
 }
 
-.cyber-tag:hover {
-  background: rgba(0, 245, 255, 0.12);
-  border-color: rgba(0, 245, 255, 0.4);
-  color: rgba(0, 245, 255, 0.9);
+/* ---------------------------------------------------------------
+   Skip link: invisible until focused, then it is a real element.
+   --------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 10;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  box-shadow: 0 0 0 1px var(--color-signal);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Print. People do print CVs. Ink is expensive, hairlines vanish on
+   paper, and a URL that only exists as a hover is lost.
+   --------------------------------------------------------------- */
+@media print {
+  :root {
+    --color-paper: #ffffff;
+    --color-ink: #000000;
+    --color-body: #000000;
+    --color-muted: #555555;
+    --color-rule: #cccccc;
+    --color-hairline: #555555;
+    --color-signal: #000000;
+  }
+
+  /* The rail's nav is a scrolling aid; on paper it is inert text. */
+  .skip-link,
+  .rail-nav {
+    display: none;
+  }
+
+  .shell {
+    display: block;
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .rail {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .row,
+  .shot {
+    break-inside: avoid;
+  }
+
+  .link,
+  .row-link {
+    text-decoration: none;
+  }
+
+  /* A printed page cannot be clicked, so every link has to say where it
+     goes. The contacts live in the rail, so this is not scoped to an
+     ancestor. */
+  .link[href^="http"]::after,
+  .row-link[href^="http"]::after,
+  .link[href^="mailto:"]::after {
+    content: " (" attr(href) ")";
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    color: var(--color-muted);
+  }
 }
