@@ -1,17 +1,29 @@
 import Image from "next/image";
-import { SectionNav } from "./components/SectionNav";
+import Link from "next/link";
+import { Close } from "./components/Close";
+import { Points } from "./components/Points";
+import { Rail } from "./components/Rail";
 import {
-  close,
-  contacts,
   education,
   experience,
-  intro,
   opening,
   projects,
+  recognition,
+  sections,
   workAuthorisation,
   type Project,
   type Role,
 } from "./content/content";
+
+/** Education and Recognition continue Experience, so they light it. */
+const OBSERVED = [
+  { id: "about", nav: "about" },
+  { id: "experience", nav: "experience" },
+  { id: "education", nav: "experience" },
+  { id: "recognition", nav: "experience" },
+  { id: "projects", nav: "projects" },
+  { id: "contact", nav: "contact" },
+] as const;
 
 export default function Page() {
   return (
@@ -20,33 +32,7 @@ export default function Page() {
         Skip to content
       </a>
 
-      {/* Left rail: who, then how to move around, then how to reach me.
-          Sticky on desktop, an ordinary header on smaller screens. */}
-      <header className="rail">
-        <div className="rail-inner">
-          <h1 className="nameplate">{intro.name}</h1>
-          <p className="tagline">{intro.tagline}</p>
-          <p className="rail-standfirst">
-            {intro.standfirst.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
-
-          <SectionNav />
-
-          {/* role="list" because the CSS reset removes the bullets, and
-              Safari drops list semantics when it does. */}
-          <ul className="rail-contacts" role="list">
-            {contacts.map((contact) => (
-              <li key={contact.href}>
-                <a className="link" href={contact.href} rel="me">
-                  {contact.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </header>
+      <Rail items={sections} observe={OBSERVED} home />
 
       <main id="main" tabIndex={-1} className="content">
         {/* The opening runs without an eyebrow. It is the top of the
@@ -89,6 +75,21 @@ export default function Page() {
           <p className="note work-auth">{workAuthorisation}</p>
         </section>
 
+        <section
+          id="recognition"
+          aria-labelledby="recognition-h"
+          className="band band-continues"
+        >
+          <h2 id="recognition-h" className="label">
+            Recognition
+          </h2>
+          <div className="rows">
+            {recognition.map((item) => (
+              <RoleRow key={item.id} role={item} />
+            ))}
+          </div>
+        </section>
+
         <section id="projects" aria-labelledby="projects-h" className="band">
           <h2 id="projects-h" className="label">
             Projects
@@ -100,25 +101,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-h" className="band">
-          <h2 id="contact-h" className="label">
-            Get in touch
-          </h2>
-          <div className="rows">
-            <div className="row row-close" data-current>
-              <p className="row-meta">Now</p>
-              <div className="row-body">
-                <span className="row-marker" aria-hidden="true" />
-                <p className="outro">{close.line}</p>
-                <p className="outro-mail">
-                  <a className="link" href={`mailto:${close.email}`}>
-                    {close.email}
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Close />
       </main>
     </div>
   );
@@ -135,23 +118,28 @@ function RoleRow({ role }: { role: Role }) {
           {role.title}
           <span className="row-org"> · {role.org}</span>
         </h3>
-        <p className="row-note">{role.note}</p>
+        <p className="row-note">{role.summary}</p>
+        {role.highlights && <Points items={role.highlights} />}
+        {role.caseStudy && (
+          <p className="row-links">
+            <Link className="link" href={`/work/${role.caseStudy}`}>
+              Read the write-up
+              <span className="sr-only">: {role.title}, {role.org}</span>
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );
 }
 
 function ProjectRow({ project }: { project: Project }) {
-  const heading = (
-    <>
-      {project.name}
-      {project.href && (
-        <span className="row-arrow" aria-hidden="true">
-          ↗
-        </span>
-      )}
-    </>
-  );
+  const links: { label: string; href: string; internal: boolean }[] = [];
+  if (project.caseStudy) {
+    links.push({ label: "Write-up", href: `/work/${project.caseStudy}`, internal: true });
+  }
+  if (project.live) links.push({ label: "Live", href: project.live, internal: false });
+  if (project.href) links.push({ label: "Source", href: project.href, internal: false });
 
   return (
     <div className="row">
@@ -161,17 +149,9 @@ function ProjectRow({ project }: { project: Project }) {
       </p>
       <div className="row-body">
         <span className="row-marker" aria-hidden="true" />
-        <h3 className="row-title">
-          {project.href ? (
-            <a className="row-link" href={project.href} rel="noreferrer">
-              {heading}
-              <span className="sr-only"> — source on GitHub</span>
-            </a>
-          ) : (
-            heading
-          )}
-        </h3>
+        <h3 className="row-title">{project.name}</h3>
         <p className="row-note">{project.blurb}</p>
+        {project.highlights && <Points items={project.highlights} />}
         {/* A real list: the separators are drawn in CSS, so the accessible
             name doesn't come out as "TypeScriptNext.jsreact-pdf". */}
         <ul className="stack" role="list">
@@ -179,6 +159,25 @@ function ProjectRow({ project }: { project: Project }) {
             <li key={item}>{item}</li>
           ))}
         </ul>
+        {links.length > 0 && (
+          <ul className="row-links" role="list">
+            {links.map((link) => (
+              <li key={link.href}>
+                {link.internal ? (
+                  <Link className="link" href={link.href}>
+                    {link.label}
+                    <span className="sr-only">: {project.name}</span>
+                  </Link>
+                ) : (
+                  <a className="link" href={link.href} rel="noreferrer">
+                    {link.label}
+                    <span className="sr-only">: {project.name}</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
         {project.image && (
           <figure className="shot">
             <Image

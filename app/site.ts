@@ -4,16 +4,16 @@
  */
 export const site = {
   name: "Anuj Rathee",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://anujrathee.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://anujrathee.vercel.app",
   title: "Anuj Rathee",
   description:
-    "Software developer in Lahti, Finland. I work on sports-facility software and on tools for supervising coding agents. Everything I've done, in one list.",
+    "Software developer in Espoo, Finland, building a Supabase platform for sports facilities. Roles, projects and two write-ups with the measurements behind them.",
   locale: "en_GB",
   jobTitle: "Software Developer",
   worksFor: "Alusta.ai",
   alumniOf: "LUT University",
   sameAs: [
     "https://github.com/Anujrathee7",
-    "https://www.linkedin.com/in/anuj-rathee",
+    "https://www.linkedin.com/in/anuj-rathee-061401279/",
   ],
 } as const;

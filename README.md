@@ -1,26 +1,41 @@
-# anujrathee.com
+# anujrathee.vercel.app
 
-A one-page personal site. Static, one small client component, no
-analytics.
+A personal site: one home page and two case-study write-ups under
+`/work`. Static, one small client component, no analytics.
 
 ## Editing the content
+
+Every number on the site has to trace back to the CV, the facts files in
+the applications folder, or a commit message, and be explainable in an
+interview. Work content follows the CV voice; personality stays in
+`opening`.
 
 Almost everything lives in **`app/content/content.tsx`**:
 
 - `opening` — the two paragraphs at the top. `lede` is the thesis and
   the largest type on the page; keep it to one sentence you would be
   happy to be quoted on.
-- `experience` and `education` — roles, one line of note each. Set
+- `experience`, `education` and `recognition` — each entry has a
+  one-line `summary` and optional `highlights` (what was done and what
+  changed). `caseStudy` links a row to its write-up. Set
   `current: true` on anything still running; that is what lights the
   amber marker, and nothing else should.
-- `projects` — one or two lines per project. `href` is optional and
-  omitted on the work that isn't public: add a link rather than a
-  claim. `image` is optional too, and only Letterly has one.
+- `projects` — a `blurb`, optional `highlights`, and links: `href`
+  (source, public repos only, since a private repo is a broken link for
+  everyone else), `live` and `caseStudy`. `image` is optional and
+  never a placeholder.
 - `workAuthorisation`, `close` and `contacts` — the end of the page and
   the rail.
-- `sections` — the rail's nav. `SectionNav` maps Education onto
-  Experience so scrolling up from Projects doesn't leave the wrong
+- `sections` — the rail's nav. The page passes `SectionNav` a list of
+  observed sections that folds Education and Recognition into
+  Experience, so scrolling up from Projects doesn't leave the wrong
   entry lit.
+
+The write-ups live in **`app/content/case-studies.ts`** and render at
+`/work/[slug]`. Each one is a summary, what I owned, one entry per
+problem (problem, change, check, with the measured reading in the
+gutter where the home page puts a date), and the limits. Commit links
+appear only for public repos.
 
 The site URL, description and the facts in the JSON-LD live in
 **`app/site.ts`**. Set `NEXT_PUBLIC_SITE_URL` at build time or change
@@ -64,7 +79,7 @@ Beyond those:
   `:root` — change it there, not in individual rules, or the labels,
   dates, axis and markers drift apart.
 - **Text roles**: `.lede` and `.lede-rest` for the opening, `.label`
-  for section eyebrows, `.note` for asides, `.row-*` for entries, plus
+  for section headings (the label is the heading, never an eyebrow above one), `.note` for asides, `.row-*` for entries, plus
   the body default. That is the entire hierarchy.
 - **One spacing scale**, `--space-2xs` through `--space-xl`, six steps
   ~1.6x apart.

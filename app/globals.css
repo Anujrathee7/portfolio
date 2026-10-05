@@ -609,31 +609,49 @@ p {
   color: var(--color-muted);
 }
 
-.row-link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.row-link:hover {
-  color: var(--color-ink);
-}
-
-.row-arrow {
-  display: inline-block;
-  margin-left: 0.35em;
-  font-size: 0.78em;
-  color: var(--color-muted);
-  transition: transform 160ms ease, color 160ms ease;
-}
-
-.row-link:hover .row-arrow {
-  color: var(--color-ink);
-  transform: translate(0.15em, -0.15em);
-}
-
 .row-note {
   margin-top: var(--space-2xs);
   max-width: 54ch;
+}
+
+/* What was done in a role or project. Each line is ticked off the
+   scale with a short hairline, the same mark the axis is drawn in, rather
+   than a bullet. */
+.points {
+  display: grid;
+  gap: var(--space-2xs);
+  margin-top: var(--space-xs);
+  max-width: 58ch;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.625rem;
+  height: 1px;
+  background: var(--color-hairline);
+}
+
+/* Where to go next from an entry: the write-up, a live build, the source.
+   Mono, because these are destinations rather than prose, and the same
+   small size as the rail's contacts. */
+.row-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-s);
+  margin-top: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
 
 .stack {
@@ -726,6 +744,178 @@ p {
 }
 
 /* ---------------------------------------------------------------
+   Case studies. The same scale, read the other way: where the home
+   page puts a date in the gutter, a write-up puts the measured result,
+   so every problem stands beside its number.
+   --------------------------------------------------------------- */
+.nameplate-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nameplate-link:hover {
+  color: var(--color-body);
+}
+
+.rail-back {
+  margin-top: var(--space-m);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 69rem) {
+  .rail-back {
+    margin-top: var(--space-l);
+  }
+
+  .rail-back + .rail-nav {
+    margin-top: var(--space-m);
+  }
+}
+
+.case-title {
+  font-size: 1.875rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 40rem) {
+  .case-title {
+    font-size: 2.375rem;
+  }
+}
+
+@media (min-width: 69rem) {
+  .case-title {
+    font-size: 2.75rem;
+  }
+}
+
+/* Role, organisation and period, under the title rather than above it. */
+.case-standfirst {
+  margin-top: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.case-standfirst span + span::before {
+  content: " · ";
+}
+
+.case-links {
+  margin-top: var(--space-s);
+}
+
+/* Prose that belongs to a labelled section but is not a list of entries.
+   It starts on the same edge as the row bodies, so the gutter stays a
+   column of labels and readings. */
+.prose {
+  margin-top: var(--space-s);
+  max-width: 58ch;
+}
+
+.prose > p + p {
+  margin-top: var(--space-xs);
+}
+
+.prose > .points {
+  margin-top: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media (min-width: 48rem) {
+  .prose {
+    margin-left: calc(var(--gutter) + var(--gutter-gap));
+  }
+}
+
+/* The reading. Set in mono like a date, but it is a quantity, so it keeps
+   its case (ms is not MS), uses tabular figures, and sits at full ink. */
+.reading {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+/* The label goes under the number at every width. Run on after it, as a
+   date's sub-line does on phones, it wrapped mid-phrase. */
+.row-reading .row-meta-sub {
+  display: block;
+}
+
+.row-reading .row-meta-sub::before {
+  content: none;
+}
+
+@media (min-width: 48rem) {
+  .row-reading {
+    line-height: 1.7;
+  }
+
+  .row-reading .reading {
+    display: block;
+    font-size: 0.875rem;
+  }
+
+  .row-reading .row-meta-sub {
+    margin-top: 0.15rem;
+    line-height: 1.5;
+  }
+}
+
+/* Problem, change, check: the three questions every entry answers, in the
+   order an interviewer asks them. */
+.steps {
+  margin-top: var(--space-2xs);
+  max-width: 58ch;
+}
+
+.steps dt {
+  margin-top: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.steps dt:first-child {
+  margin-top: var(--space-xs);
+}
+
+.steps dd {
+  margin-top: 0.3rem;
+}
+
+/* The receipts. Short hashes, each a link to the commit it names. */
+.commits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2xs) var(--space-xs);
+  margin-top: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.commits-label {
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------
    Skip link: invisible until focused, then it is a real element.
    --------------------------------------------------------------- */
 .skip-link {
@@ -775,7 +965,8 @@ p {
 
   /* The rail's nav is a scrolling aid; on paper it is inert text. */
   .skip-link,
-  .rail-nav {
+  .rail-nav,
+  .rail-back {
     display: none;
   }
 
@@ -796,8 +987,7 @@ p {
     break-inside: avoid;
   }
 
-  .link,
-  .row-link {
+  .link {
     text-decoration: none;
   }
 
@@ -805,7 +995,6 @@ p {
      goes. The contacts live in the rail, so this is not scoped to an
      ancestor. */
   .link[href^="http"]::after,
-  .row-link[href^="http"]::after,
   .link[href^="mailto:"]::after {
     content: " (" attr(href) ")";
     font-family: var(--font-mono);
