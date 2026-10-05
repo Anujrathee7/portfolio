@@ -86,13 +86,13 @@ export const experience: Role[] = [
     current: true,
     caseStudy: "alusta",
     summary:
-      "A platform for sports facilities that keeps fields, equipment and soil health in one inventory, built on Supabase and PostgreSQL.",
+      "A platform that helps sports facilities run fields, equipment and soil health from one place. I own the front end, the database and deployment.",
     highlights: [
-      "Cut a 365-day soil query from 2.1 s to 79 ms, and a task query from 347 ms to 45 ms, by rewriting 127 row-level security policies and adding indexes.",
-      "Integrated Soil Scout soil moisture sensors with an hourly sync and a three-year backfill that picks up where it stopped after a failure.",
-      "Added a nightly job that rolls older sensor readings up into daily values, taking a year of chart data from 33 MB to 0.43 MB.",
-      "Built the map in Mapbox GL with PostGIS geometry behind it, so fields and their sub-areas are drawn as real boundaries and tasks are created straight from the map.",
-      "Wrote 109 end-to-end tests in Playwright, 68 desktop and 41 phone, that run against a local Supabase stack instead of mocks.",
+      "Cut a year of soil readings from 2.1 s to 79 ms by rewriting 127 security policies and adding indexes.",
+      "Connected Soil Scout sensors with an hourly sync and three years of backfilled history.",
+      "Shrank a year-long chart from 33 MB to 0.43 MB by rolling old readings into daily values.",
+      "Built a map of real field boundaries in Mapbox and PostGIS, with tasks created from the map.",
+      "Wrote 109 Playwright tests for desktop and phone against a real local database.",
     ],
   },
   {
@@ -103,7 +103,7 @@ export const experience: Role[] = [
     summary:
       "Client and pitch work, alongside the tools in the projects list below.",
     highlights: [
-      "Pitched a redesign to Norrin, a Nordic enterprise AI consultancy. Designed the site, restructured their copy section by section, and built it in React with coding agents working from my specs.",
+      "Designed and built a redesign pitch for Norrin, a Nordic enterprise AI consultancy.",
     ],
   },
   {
@@ -126,8 +126,8 @@ export const experience: Role[] = [
       "An AI brand-visibility platform with real users, around 500 a month and 10,000 API requests a week.",
     highlights: [
       "Built the JWT authentication, password hashing and the REST endpoints behind its generative AI response analysis.",
-      "Validated, normalized and restructured data arriving from outside before it reached PostgreSQL, because the shape it arrived in was never the shape we wanted to store.",
-      "Found slow queries and fixed them with the indexes that were missing and joins that did less work.",
+      "Validated and reshaped incoming data before it reached PostgreSQL.",
+      "Sped up slow queries with missing indexes and leaner joins.",
     ],
   },
   {
@@ -139,8 +139,8 @@ export const experience: Role[] = [
       "A dashboard for managing VTT’s internal and external AI sales agents, in React, Tailwind CSS and Vite, in a team of six.",
     highlights: [
       "Acted as Scrum master, working with the product owner to map out the scope and requirements.",
-      "Delivered a working MVP the product owner can share with the business owners to show how it helps manage the agents.",
-      "Set up the coding convention and the commit and pull request workflow, so every code review followed the same structure.",
+      "Delivered a working MVP the product owner demos to the business.",
+      "Set up the team’s coding convention and pull request workflow.",
     ],
   },
 ];
@@ -189,9 +189,9 @@ export const projects: Project[] = [
     type: "Hackathon",
     caseStudy: "relex",
     blurb:
-      "Answers questions about 45 documents of meeting transcripts, email and status reports, and shows the exact quote behind every answer. Quotes are read back from the stored file, not written by the model, so a source cannot be invented.",
+      "Answers questions about a 45-document project archive and shows the exact quote behind each answer.",
     highlights: [
-      "Built the question and answer screens and the search behind them. For questions worded differently from the archive, translating them into its own words raised the right sources found from 19 of 71 to 52 of 71.",
+      "Built the search and the question and answer screens. Reworded questions now find 52 of 71 sources, up from 19.",
     ],
     stack: ["Python", "React", "SQLite", "Qwen2.5-14B"],
     href: `${GH}/relex-ai`,
@@ -202,10 +202,10 @@ export const projects: Project[] = [
     year: "2026",
     type: "Web app",
     blurb:
-      "A cover letter builder that runs entirely in the browser. Letters are written next to a live A4 preview and download as a real PDF with selectable text and embedded fonts.",
+      "A cover letter builder that runs in the browser and exports a real PDF with selectable text.",
     highlights: [
-      "Kept the preview and the PDF identical by taking every colour and size from one shared set of styles. The build fails if either renderer types in a value by hand, and a test measures the boxes inside the finished PDF to check they line up with the preview.",
-      "163 automated checks across the editor, the templates and the PDF output.",
+      "Kept the live preview and the PDF identical, with tests that measure the finished PDF.",
+      "163 automated checks across the editor, templates and PDF.",
     ],
     stack: ["TypeScript", "Next.js", "react-pdf", "Playwright"],
     href: `${GH}/Letterly`,
@@ -224,9 +224,9 @@ export const projects: Project[] = [
     year: "2026",
     type: "Developer tool",
     blurb:
-      "A visual editor for React projects that writes no code of its own. A change made on the page is handed to a coding agent that edits the source, and the editor checks the reloaded page against the request.",
+      "A visual editor for React that hands each change to a coding agent and checks the result.",
     highlights: [
-      "Tagged every element with the file, line and column it came from, so the agent is told where to edit instead of searching for it. Each change ends as landed, drifted, blocked or stalled, and can be reverted byte for byte.",
+      "Tagged every element with its exact source location, so the agent edits the right line first time.",
     ],
     stack: ["TypeScript", "React", "Vite", "Babel"],
     href: `${GH}/source-mapped-visual-editor`,
@@ -237,7 +237,7 @@ export const projects: Project[] = [
     year: "2026",
     type: "Freelance pitch",
     blurb:
-      "An unsolicited redesign for Norrin, a Nordic enterprise AI consultancy. Three pages, with the copy restructured section by section.",
+      "A three-page redesign pitch for Norrin, a Nordic enterprise AI consultancy.",
     stack: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     live: "https://norrin-redesign.vercel.app",
   },
@@ -247,9 +247,9 @@ export const projects: Project[] = [
     year: "2026",
     type: "Desktop app",
     blurb:
-      "A desktop app for running an open source AI agent, with a Rust backend and a TypeScript interface. Each conversation runs as its own agent process, so one can be stopped without touching the rest.",
+      "A desktop app for running an open source AI agent, one process per conversation.",
     highlights: [
-      "Built for debugging, so the model’s reasoning, the requests waiting in line and each conversation’s token use are visible while it runs.",
+      "Shows the model’s reasoning and each conversation’s token use live, for debugging.",
     ],
     stack: ["Rust", "Tauri 2.0", "TypeScript"],
   },
@@ -259,7 +259,7 @@ export const projects: Project[] = [
     year: "2025",
     type: "ML service",
     blurb:
-      "An image model behind a Flask endpoint that sorts rubbish into twelve classes, with brown, green and white glass kept apart.",
+      "An image model behind a Flask API that sorts rubbish into twelve classes.",
     stack: ["Python", "TensorFlow", "Flask"],
   },
   {
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     year: "2025",
     type: "Hackathon",
     blurb:
-      "Ranks CVs against a job description by embedding both and returning the five closest. I wrote the text extraction.",
+      "Ranks CVs against a job description by meaning. I wrote the text extraction.",
     stack: ["Python", "sentence-transformers"],
   },
   {

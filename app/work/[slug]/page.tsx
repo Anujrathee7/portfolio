@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Close } from "../../components/Close";
-import { Points } from "../../components/Points";
 import { Rail } from "../../components/Rail";
 import {
   caseStudies,
@@ -14,7 +13,6 @@ import {
 const SECTIONS = [
   { id: "overview", label: "Overview" },
   { id: "work", label: "The work" },
-  { id: "limits", label: "Limits" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -23,7 +21,6 @@ const OBSERVED = [
   { id: "overview", nav: "overview" },
   { id: "owned", nav: "overview" },
   { id: "work", nav: "work" },
-  { id: "limits", nav: "limits" },
   { id: "contact", nav: "contact" },
 ] as const;
 
@@ -84,17 +81,8 @@ export default async function CaseStudyPage({ params }: Props) {
           </h2>
           <div className="rows">
             {study.entries.map((entry) => (
-              <EntryRow key={entry.id} entry={entry} commitBase={study.commitBase} />
+              <EntryRow key={entry.id} entry={entry} />
             ))}
-          </div>
-        </section>
-
-        <section id="limits" aria-labelledby="limits-h" className="band">
-          <h2 id="limits-h" className="label">
-            Limits
-          </h2>
-          <div className="prose">
-            <Points items={study.limits} />
           </div>
         </section>
 
@@ -140,16 +128,11 @@ function Overview({ study }: { study: CaseStudy }) {
 }
 
 /**
- * One problem on the scale. The gutter carries its measured reading where
- * the home page carries a date: the number first, what it measures under.
+ * One improvement on the scale. The gutter carries its measured reading
+ * where the home page carries a date: the number first, what it measures
+ * under, and one line beside it saying what was done.
  */
-function EntryRow({
-  entry,
-  commitBase,
-}: {
-  entry: CaseEntry;
-  commitBase?: string;
-}) {
+function EntryRow({ entry }: { entry: CaseEntry }) {
   return (
     <article className="row" aria-labelledby={`${entry.id}-h`}>
       <p className="row-meta row-reading">
@@ -161,14 +144,7 @@ function EntryRow({
         <h3 id={`${entry.id}-h`} className="row-title">
           {entry.title}
         </h3>
-        <dl className="steps">
-          <dt>Problem</dt>
-          <dd>{entry.problem}</dd>
-          <dt>Change</dt>
-          <dd>{entry.change}</dd>
-          <dt>Check</dt>
-          <dd>{entry.check}</dd>
-        </dl>
+        <p className="row-note">{entry.line}</p>
         {entry.image && (
           <figure className="shot">
             <Image
@@ -180,18 +156,6 @@ function EntryRow({
             />
             <figcaption>{entry.image.caption}</figcaption>
           </figure>
-        )}
-        {commitBase && entry.commits && (
-          <p className="commits">
-            <span className="commits-label">
-              {entry.commits.length === 1 ? "Commit" : "Commits"}
-            </span>
-            {entry.commits.map((sha) => (
-              <a key={sha} className="link" href={`${commitBase}${sha}`} rel="noreferrer">
-                {sha}
-              </a>
-            ))}
-          </p>
         )}
       </div>
     </article>

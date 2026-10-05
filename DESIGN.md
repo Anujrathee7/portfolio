@@ -118,9 +118,9 @@ components:
 
 **Creative North Star: "The Instrument"**
 
-The page is an instrument, not a document. Every piece of work on it is about making an exact quantity visible where there was a vague description, so the system is built from that: a cold blue-black ground that reads as glass, warm ink set against it, a single signal colour, and a scale drawn down the left of every list. On the home page the scale's gutter carries dates; on a case study the same gutter carries the measured result, so every problem stands beside its number.
+The page is an instrument, not a document. Every piece of work on it is about making an exact quantity visible where there was a vague description, so the system is built from that: a cold blue-black ground that reads as glass, warm ink set against it, a single signal colour, and a scale drawn down the left of every list. On the home page the scale's gutter carries dates; on a case study the same gutter carries the measured result, so every improvement stands beside its number.
 
-The type system is two voices. Azeret Mono is the machine voice: the nameplate, section labels, dates, readings, stacks, destinations, commit hashes; anything the page measures or classifies. Newsreader is the human voice: anything written in the first person, every title, every paragraph. The tension is stated once at the top of the rail, mono nameplate over serif tagline, and repeated everywhere below.
+The type system is two voices. Azeret Mono is the machine voice: the nameplate, section labels, dates, readings, stacks, destinations; anything the page measures or classifies. Newsreader is the human voice: anything written in the first person, every title, every paragraph. The tension is stated once at the top of the rail, mono nameplate over serif tagline, and repeated everywhere below.
 
 Density is that of a well-set write-up: one reading column (42rem max) beside a sticky identity rail, generous section breaks, prose held to 54–58ch. There is one moving part on the page (the rail's rule growing into the section being read) and no decoration beyond hairlines and markers. Dark only; there is no light theme and nothing is conditional on `prefers-color-scheme`. Print is the one exception, and it exists for paper, not as a theme.
 
@@ -143,7 +143,7 @@ Six cool neutrals stepped by contrast against one blue-black ground, and a singl
 - **Instrument Ground** (`{colors.paper}`): the page background, and the fill of hollow markers so the axis appears to pass behind them.
 - **Warm Ink** (`{colors.ink}`, 15.41:1): headings, the lede, titles, the closing line, readings, and link hover. A warm off-white so it sits against the cold ground rather than on it.
 - **Prose Grey** (`{colors.body}`, 8.21:1): the body default for paragraphs and list text.
-- **Meta Grey** (`{colors.muted}`, 5.55:1): section labels, dates, reading sub-labels, stacks, captions, the Problem/Change/Check terms, inactive nav.
+- **Meta Grey** (`{colors.muted}`, 5.55:1): section labels, dates, reading sub-labels, stacks, captions, inactive nav.
 - **Axis Line** (`{colors.rule}`): the scale's axis, marker rings, the screenshot frame. Structural only; never text.
 - **Hairline** (`{colors.hairline}`, 3.15:1): link underlines at rest and the ticks on impact lines. It clears 3:1 so an underline is visible without hover.
 
@@ -167,10 +167,10 @@ Six cool neutrals stepped by contrast against one blue-black ground, and a singl
 - **Tagline / Outro** (400, 1.25rem stepping to 1.375rem / 1.4375rem, Warm Ink): the line under the nameplate and the closing line.
 - **Title** (400, 1.125rem stepping to 1.1875rem, 1.35): an entry on the scale.
 - **Body** (400, 1.0625rem stepping to 1.125rem at 40rem, 1.66): prose, held to 54–58ch. Impact lines and lede-rest run slightly tighter (1.6, 1.62).
-- **Label** (mono 500, 0.6875rem, 0.2em, uppercase, Meta Grey): section names. The rail's nav labels (0.18em) and the Problem/Change/Check terms (0.16em) are the same role with tighter tracking.
+- **Label** (mono 500, 0.6875rem, 0.2em, uppercase, Meta Grey): section names. The rail's nav labels (0.18em) are the same role with tighter tracking.
 - **Meta** (mono 400, 0.6875rem, 0.1em, uppercase, Meta Grey): dates and project types in the gutter, and standfirst lines (0.14em) under the nameplate and the case title.
 - **Reading** (mono 400, 0.8125rem stepping to 0.875rem at 48rem, 0.02em, tabular figures, Warm Ink, no case transform): a measured quantity in the gutter. It keeps its case because ms is not MS.
-- **Destination** (mono 400, 0.75rem, 0.04em): contacts, entry links, the back link, commit hashes. These are places to go, not prose.
+- **Destination** (mono 400, 0.75rem, 0.04em): contacts, entry links, the back link. These are places to go, not prose.
 
 ### Named Rules
 **The Two Voices Rule.** Mono for anything the page measures or classifies; serif for anything written in the first person. Never set a sentence of prose in mono or a date in serif.
@@ -185,7 +185,7 @@ A sticky identity rail beside a scrolling column of sections. Below 69rem it is 
 
 **The scale.** Each list is drawn as a 1px axis with a marker per entry. Below 48rem the axis runs down the left edge and the date sits above each entry. From 48rem each row becomes a two-column grid: a `{spacing.gutter}` gutter, a `{spacing.gutter-gap}` gap, and the body. The axis sits `{spacing.axis}` into that gap from the body edge; dates sit right-aligned flush against it, and section labels are right-aligned in the same gutter width, so the whole left edge reads as one column of readings. Rows abut and each carries `{spacing.row-pad}` above and below, so the axis draws as one unbroken line overshooting the first and last marker by one row's padding.
 
-**Off-scale content aligns to the body edge.** Prose that belongs to a labelled section but is not a list of entries (ownership, limits) and the work-authorisation note are indented by `gutter + gutter-gap` from 48rem, so the gutter stays a column of labels and readings and nothing else.
+**Off-scale content aligns to the body edge.** Prose that belongs to a labelled section but is not a list of entries (ownership) and the work-authorisation note are indented by `gutter + gutter-gap` from 48rem, so the gutter stays a column of labels and readings and nothing else.
 
 **Spacing.** Six steps about 1.6x apart, `{spacing.2xs}` through `{spacing.xl}`, so each gap is unmistakably different from its neighbours. Sections open with `l`, rising to `xl` at 69rem; a continuation (Education and Recognition after Experience, Ownership after Overview) opens with `m`, rising to `l`.
 
@@ -216,7 +216,7 @@ Text-coloured, marked only by the underline.
 - **Rest:** inherits the surrounding colour, 1px underline in Hairline at a 0.22em offset.
 - **Hover:** text and underline go to Warm Ink over 120ms.
 - **Focus:** 2px Signal Amber outline, 3px offset, 2px radius, for every link, summary and button.
-- **Destinations:** groups of links set in the destination mono role (contacts, entry links, case-study source links, the rail's back link, commit hashes) wrap with a `2xs` by `s` gap.
+- **Destinations:** groups of links set in the destination mono role (contacts, entry links, case-study source links, the rail's back link) wrap with a `2xs` by `s` gap.
 
 ### Navigation
 The rail's section nav. Mono labels in Meta Grey, each preceded by the same marker the scale uses.
@@ -229,13 +229,10 @@ The rail's section nav. Mono labels in Meta Grey, each preceded by the same mark
 An entry on the axis: gutter text, a marker, and a body.
 - **Gutter:** a date (meta role, with a sub-line for what the thing is) on the home page; a reading (reading role in Warm Ink, label under it in meta) on a case study.
 - **Marker:** 7px circle at `--dot-y` from the top of the body, hollow at rest, ring lifts on hover, filled amber with halo only when the entry is current.
-- **Body:** title in Warm Ink, an optional organisation in Meta Grey, a one-line note (54ch), then any of impact lines, a stack, destinations, a screenshot, or the Problem/Change/Check list.
+- **Body:** title in Warm Ink, an optional organisation in Meta Grey, a one-line note (54ch), then any of impact lines, a stack, destinations, or a screenshot. On a case study the body is the title and one line.
 
 ### Impact Lines
 What was done, one line each, ticked off the scale with a 0.625rem Hairline tick instead of a bullet. 58ch, `2xs` between lines. Inside off-scale prose they take the prose size.
-
-### Problem / Change / Check
-A definition list answering the three questions every case-study entry answers, in order. Terms in the label role (0.16em tracking), definitions in body prose, `s` between pairs.
 
 ### Stack
 Technologies as a single mono line in Meta Grey (0.6875rem, 0.06em), separated by middots.
