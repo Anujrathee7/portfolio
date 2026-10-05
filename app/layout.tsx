@@ -85,8 +85,7 @@ export default function RootLayout({
           // Static object, no user input. Stringified once at build.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        {/* Cookieless page counts. A CV link tagged ?utm_source=<company>
-            shows up in the dashboard as a visit from that application. */}
+        {/* Cookieless, aggregate page counts. */}
         <Analytics />
       </body>
     </html>
