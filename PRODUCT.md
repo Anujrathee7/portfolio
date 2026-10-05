@@ -17,14 +17,13 @@ managers read this page carefully; a weak page costs more than no page.
 ## Product Purpose
 
 The personal site of Anuj Rathee, a software developer in Espoo, Finland. It exists to carry more
-evidence than a CV can: what was built, what changed because of it, how that was measured, and what
-was not proven. Success is a hiring manager finishing the page able to name two concrete things
+evidence than a CV can: what was built, what changed because of it, and how that was measured. Success is a hiring manager finishing the page able to name two concrete things
 Anuj did and the numbers behind them, and wanting to ask about them.
 
 ## Positioning
 
 The CV lists results. The site shows the working behind them: before and after numbers with how
-they were measured, which share of team work was Anuj's, and the limits stated up front. A
+they were measured, and which share of team work was Anuj's. A
 production or performance claim on this site is something he can walk through line by line.
 
 ## Operating Context
@@ -71,8 +70,9 @@ production or performance claim on this site is something he can walk through li
 
 1. Every number has a source and a method. If it can't be explained in an interview, it doesn't ship.
 2. Say whose work it was. Team results name the team; Anuj's share is stated separately.
-3. State the limits. What wasn't proven is part of the evidence.
-4. Depth one click away. The home page scans in a minute; case studies hold the detail.
+3. Lead with the improvement. One short line per change, the number beside it, nothing that argues
+   against the work.
+4. Glanceable everywhere. The home page scans in a minute, and each write-up entry is one line.
 
 ## Accessibility & Inclusion
 

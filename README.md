@@ -32,10 +32,9 @@ Almost everything lives in **`app/content/content.tsx`**:
   entry lit.
 
 The write-ups live in **`app/content/case-studies.ts`** and render at
-`/work/[slug]`. Each one is a summary, what I owned, one entry per
-problem (problem, change, check, with the measured reading in the
-gutter where the home page puts a date), and the limits. Commit links
-appear only for public repos.
+`/work/[slug]`. Each one is a short summary, what I owned, and one
+entry per improvement: the measured reading in the gutter where the home
+page puts a date, a title, and one line saying what I did.
 
 The site URL, description and the facts in the JSON-LD live in
 **`app/site.ts`**. Set `NEXT_PUBLIC_SITE_URL` at build time or change
