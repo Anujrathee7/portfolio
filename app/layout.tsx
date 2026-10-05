@@ -66,7 +66,7 @@ const personSchema = {
   alumniOf: { "@type": "CollegeOrUniversity", name: site.alumniOf },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lahti",
+    addressLocality: "Espoo",
     addressCountry: "FI",
   },
   sameAs: site.sameAs,

@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T12:48:14.077Z",
+  "title": "Design System: Anuj Rathee",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Instrument Ground",
+        "canonical": "#0b0f14",
+        "tonalRamp": [
+          "oklch(15% 0.012 254)",
+          "oklch(25% 0.012 254)",
+          "oklch(35% 0.012 254)",
+          "oklch(45% 0.012 254)",
+          "oklch(55% 0.012 254)",
+          "oklch(65% 0.012 254)",
+          "oklch(80% 0.012 254)",
+          "oklch(95% 0.012 254)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#e8e6e1",
+        "tonalRamp": [
+          "oklch(15% 0.007 89)",
+          "oklch(25% 0.007 89)",
+          "oklch(35% 0.007 89)",
+          "oklch(45% 0.007 89)",
+          "oklch(55% 0.007 89)",
+          "oklch(65% 0.007 89)",
+          "oklch(80% 0.007 89)",
+          "oklch(95% 0.007 89)"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Prose Grey",
+        "canonical": "#a3aab4",
+        "tonalRamp": [
+          "oklch(15% 0.016 257)",
+          "oklch(25% 0.016 257)",
+          "oklch(35% 0.016 257)",
+          "oklch(45% 0.016 257)",
+          "oklch(55% 0.016 257)",
+          "oklch(65% 0.016 257)",
+          "oklch(80% 0.016 257)",
+          "oklch(95% 0.016 257)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Meta Grey",
+        "canonical": "#818b96",
+        "tonalRamp": [
+          "oklch(15% 0.020 251)",
+          "oklch(25% 0.020 251)",
+          "oklch(35% 0.020 251)",
+          "oklch(45% 0.020 251)",
+          "oklch(55% 0.020 251)",
+          "oklch(65% 0.020 251)",
+          "oklch(80% 0.020 251)",
+          "oklch(95% 0.020 251)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Axis Line",
+        "canonical": "#202833",
+        "tonalRamp": [
+          "oklch(15% 0.023 256)",
+          "oklch(25% 0.023 256)",
+          "oklch(35% 0.023 256)",
+          "oklch(45% 0.023 256)",
+          "oklch(55% 0.023 256)",
+          "oklch(65% 0.023 256)",
+          "oklch(80% 0.023 256)",
+          "oklch(95% 0.023 256)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#586373",
+        "tonalRamp": [
+          "oklch(15% 0.029 258)",
+          "oklch(25% 0.029 258)",
+          "oklch(35% 0.029 258)",
+          "oklch(45% 0.029 258)",
+          "oklch(55% 0.029 258)",
+          "oklch(65% 0.029 258)",
+          "oklch(80% 0.029 258)",
+          "oklch(95% 0.029 258)"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "canonical": "#e8a33d",
+        "tonalRamp": [
+          "oklch(15% 0.140 73)",
+          "oklch(25% 0.140 73)",
+          "oklch(35% 0.140 73)",
+          "oklch(45% 0.140 73)",
+          "oklch(55% 0.140 73)",
+          "oklch(65% 0.140 73)",
+          "oklch(80% 0.140 73)",
+          "oklch(95% 0.140 73)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Case-study title. 1.875rem, 2.375rem at 40rem, 2.75rem at 69rem. Nothing above it."
+      },
+      "headline": {
+        "displayName": "Lede",
+        "purpose": "Home page thesis and the 404 line. 1.375rem, 1.75rem at 40rem, 2rem at 69rem; Warm Ink, 24-26ch."
+      },
+      "nameplate": {
+        "displayName": "Nameplate",
+        "purpose": "The name in the rail, uppercase mono."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "An entry on the scale. 1.1875rem from 40rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "First-person prose, 54-58ch. 1.125rem from 40rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section headings, nav labels, Problem/Change/Check terms. Uppercase."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Dates, project types, standfirst lines. Uppercase."
+      },
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "A measured quantity in the gutter. Tabular figures, own case, Warm Ink. 0.875rem from 48rem."
+      },
+      "destination": {
+        "displayName": "Destination",
+        "purpose": "Contacts, entry links, the back link, commit hashes."
+      }
+    },
+    "shadows": [
+      {
+        "name": "marker-ring",
+        "value": "inset 0 0 0 1px var(--color-rule)",
+        "purpose": "Hollow scale marker at rest; the ring lifts to Meta Grey on row hover."
+      },
+      {
+        "name": "current-halo",
+        "value": "inset 0 0 0 1px var(--color-signal), 0 0 0 3px color-mix(in srgb, var(--color-signal) 16%, transparent)",
+        "purpose": "Filled marker of a running entry and the closing Now."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rail-rule-grow",
+        "value": "width 220ms cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "purpose": "The page's one moving part: the rail rule growing into the section in view."
+      },
+      {
+        "name": "state-colour",
+        "value": "120ms-160ms ease",
+        "purpose": "Colour and underline changes on link, nav and marker hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "type",
+        "value": "40rem"
+      },
+      {
+        "name": "scale",
+        "value": "48rem"
+      },
+      {
+        "name": "rail",
+        "value": "69rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Text-coloured link marked only by a hairline underline; amber is never available here.",
+      "html": "<p class=\"ds-prose\">Read the <a class=\"ds-link\" href=\"#\">write-up</a> or the <a class=\"ds-link\" href=\"#\">source</a>.</p>",
+      "css": ".ds-prose{margin:0;padding:1rem;background:var(--color-paper,#0b0f14);font-family:var(--font-serif, Newsreader, Georgia, serif);font-size:1.125rem;line-height:1.66;color:var(--color-body,#a3aab4)}.ds-link{color:inherit;text-decoration:underline;text-decoration-color:var(--color-hairline,#586373);text-decoration-thickness:1px;text-underline-offset:.22em;transition:text-decoration-color 120ms ease,color 120ms ease}.ds-link:hover{color:var(--color-ink,#e8e6e1);text-decoration-color:var(--color-ink,#e8e6e1)}.ds-link:focus-visible{outline:2px solid var(--color-signal,#e8a33d);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Section Nav",
+      "kind": "nav",
+      "refersTo": "rail-link",
+      "description": "Rail nav at desktop width: mono labels with a rule that grows into the section in view.",
+      "html": "<nav class=\"ds-nav\"><ul><li><a class=\"ds-nav-link\" data-active href=\"#\"><span class=\"ds-nav-rule\"></span><span>Overview</span></a></li><li><a class=\"ds-nav-link\" href=\"#\"><span class=\"ds-nav-rule\"></span><span>The work</span></a></li><li><a class=\"ds-nav-link\" href=\"#\"><span class=\"ds-nav-rule\"></span><span>Limits</span></a></li></ul></nav>",
+      "css": ".ds-nav{background:var(--color-paper,#0b0f14);padding:1rem}.ds-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75rem}.ds-nav-link{display:inline-flex;align-items:center;gap:.9rem;padding-block:.3rem;color:var(--color-muted,#818b96);text-decoration:none;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.18em;transition:color 160ms ease}.ds-nav-rule{display:block;width:1.25rem;height:1px;background:currentColor;transition:width 220ms cubic-bezier(.22,.61,.36,1),background-color 160ms ease}.ds-nav-link:hover,.ds-nav-link:focus-visible,.ds-nav-link[data-active]{color:var(--color-ink,#e8e6e1)}.ds-nav-link:hover .ds-nav-rule{width:2.25rem}.ds-nav-link[data-active] .ds-nav-rule{width:3rem;background:var(--color-signal,#e8a33d)}.ds-nav-link:focus-visible{outline:2px solid var(--color-signal,#e8a33d);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "section-label",
+      "description": "A section's heading: mono, uppercase, right-aligned in the gutter. Never a kicker above another heading.",
+      "html": "<div class=\"ds-band\"><h2 class=\"ds-label\">Experience</h2></div>",
+      "css": ".ds-band{background:var(--color-paper,#0b0f14);padding:1rem}.ds-label{margin:0;width:9rem;margin-right:-.2em;text-align:right;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;font-weight:500;line-height:1.4;text-transform:uppercase;letter-spacing:.2em;color:var(--color-muted,#818b96)}"
+    },
+    {
+      "name": "Scale Row (date)",
+      "kind": "custom",
+      "refersTo": "marker-current",
+      "description": "Entries on the axis with dates in the gutter; the marker fills amber only while an entry is running.",
+      "html": "<div class=\"ds-scale\"><div class=\"ds-row\" data-current><p class=\"ds-meta\">2025 &ndash; Now</p><div class=\"ds-body\"><span class=\"ds-marker\"></span><h3 class=\"ds-title\">Software developer <span class=\"ds-org\">&middot; Alusta</span></h3><ul class=\"ds-points\"><li>One line of what was done and what changed.</li><li>Another, ticked off the scale.</li></ul></div></div><div class=\"ds-row\"><p class=\"ds-meta\">2026<span class=\"ds-sub\">Hackathon</span></p><div class=\"ds-body\"><span class=\"ds-marker\"></span><h3 class=\"ds-title\">Memory With a Receipt</h3><ul class=\"ds-stack\"><li>Next.js</li><li>TypeScript</li></ul></div></div></div>",
+      "css": ".ds-scale{background:var(--color-paper,#0b0f14);padding:0 1rem;font-family:var(--font-serif, Newsreader, Georgia, serif);font-size:1.125rem;line-height:1.66;color:var(--color-body,#a3aab4)}.ds-row{position:relative;display:grid;grid-template-columns:9rem minmax(0,1fr);column-gap:2.25rem;padding-block:1.5rem}.ds-row::before{content:'';position:absolute;top:0;bottom:0;width:1px;left:calc(9rem + 2.25rem - 1.125rem);background:var(--color-rule,#202833)}.ds-meta{margin:0;margin-right:-.1em;text-align:right;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;color:var(--color-muted,#818b96)}.ds-sub{display:block}.ds-body{position:relative}.ds-marker{position:absolute;left:calc(-1.125rem - .5px);top:.72rem;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--color-paper,#0b0f14);box-shadow:inset 0 0 0 1px var(--color-rule,#202833);transition:box-shadow 160ms ease}.ds-row:hover .ds-marker{box-shadow:inset 0 0 0 1px var(--color-muted,#818b96)}.ds-row[data-current] .ds-marker{background:var(--color-signal,#e8a33d);box-shadow:inset 0 0 0 1px var(--color-signal,#e8a33d),0 0 0 3px color-mix(in srgb,var(--color-signal,#e8a33d) 16%,transparent)}.ds-title{margin:0;font-size:1.1875rem;font-weight:400;line-height:1.35;color:var(--color-ink,#e8e6e1)}.ds-org{color:var(--color-muted,#818b96)}.ds-points{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.5rem;font-size:1rem;line-height:1.6;max-width:58ch}.ds-points li{position:relative;padding-left:1.25rem}.ds-points li::before{content:'';position:absolute;left:0;top:.8em;width:.625rem;height:1px;background:var(--color-hairline,#586373)}.ds-stack{list-style:none;padding:0;display:flex;flex-wrap:wrap;margin:.75rem 0 0;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;letter-spacing:.06em;color:var(--color-muted,#818b96)}.ds-stack li:not(:last-child)::after{content:'\\00B7';margin-inline:.55em}"
+    },
+    {
+      "name": "Scale Row (reading)",
+      "kind": "custom",
+      "refersTo": "reading",
+      "description": "A case-study entry: the measured reading in the gutter at full ink, Problem/Change/Check in the body.",
+      "html": "<div class=\"ds-scale\"><article class=\"ds-row\"><p class=\"ds-meta ds-reading-meta\"><span class=\"ds-reading\">2.1 s &rarr; 79 ms</span><span class=\"ds-sub\">What it measures</span></p><div class=\"ds-body\"><span class=\"ds-marker\"></span><h3 class=\"ds-title\">One problem</h3><dl class=\"ds-steps\"><dt>Problem</dt><dd>What was wrong.</dd><dt>Change</dt><dd>What changed.</dd><dt>Check</dt><dd>How it was measured.</dd></dl><p class=\"ds-commits\"><span class=\"ds-commits-label\">Commit</span><a class=\"ds-link\" href=\"#\">a1b2c3d</a></p></div></article></div>",
+      "css": ".ds-scale{background:var(--color-paper,#0b0f14);padding:0 1rem;font-family:var(--font-serif, Newsreader, Georgia, serif);font-size:1.125rem;line-height:1.66;color:var(--color-body,#a3aab4)}.ds-row{position:relative;display:grid;grid-template-columns:9rem minmax(0,1fr);column-gap:2.25rem;padding-block:1.5rem}.ds-row::before{content:'';position:absolute;top:0;bottom:0;width:1px;left:calc(9rem + 2.25rem - 1.125rem);background:var(--color-rule,#202833)}.ds-meta{margin:0;margin-right:-.1em;text-align:right;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;color:var(--color-muted,#818b96)}.ds-sub{display:block}.ds-body{position:relative}.ds-marker{position:absolute;left:calc(-1.125rem - .5px);top:.72rem;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--color-paper,#0b0f14);box-shadow:inset 0 0 0 1px var(--color-rule,#202833);transition:box-shadow 160ms ease}.ds-row:hover .ds-marker{box-shadow:inset 0 0 0 1px var(--color-muted,#818b96)}.ds-row[data-current] .ds-marker{background:var(--color-signal,#e8a33d);box-shadow:inset 0 0 0 1px var(--color-signal,#e8a33d),0 0 0 3px color-mix(in srgb,var(--color-signal,#e8a33d) 16%,transparent)}.ds-title{margin:0;font-size:1.1875rem;font-weight:400;line-height:1.35;color:var(--color-ink,#e8e6e1)}.ds-org{color:var(--color-muted,#818b96)}.ds-reading-meta{line-height:1.7}.ds-reading{display:block;font-size:.875rem;letter-spacing:.02em;text-transform:none;font-variant-numeric:tabular-nums;color:var(--color-ink,#e8e6e1);white-space:nowrap}.ds-reading-meta .ds-sub{margin-top:.15rem;line-height:1.5}.ds-steps{margin:.5rem 0 0;max-width:58ch}.ds-steps dt{margin-top:1.25rem;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;font-weight:500;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:var(--color-muted,#818b96)}.ds-steps dt:first-child{margin-top:.75rem}.ds-steps dd{margin:.3rem 0 0}.ds-commits{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem;margin:1.25rem 0 0;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.75rem;letter-spacing:.04em}.ds-commits-label{color:var(--color-muted,#818b96)}.ds-link{color:inherit;text-decoration:underline;text-decoration-color:var(--color-hairline,#586373);text-decoration-thickness:1px;text-underline-offset:.22em;transition:text-decoration-color 120ms ease,color 120ms ease}.ds-link:hover{color:var(--color-ink,#e8e6e1);text-decoration-color:var(--color-ink,#e8e6e1)}.ds-link:focus-visible{outline:2px solid var(--color-signal,#e8a33d);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Destinations",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Mono link group for contacts, entry links and the back link.",
+      "html": "<ul class=\"ds-dest\" role=\"list\"><li><a class=\"ds-link\" href=\"#\">Read the write-up</a></li><li><a class=\"ds-link\" href=\"#\">Live</a></li><li><a class=\"ds-link\" href=\"#\">Source</a></li></ul>",
+      "css": ".ds-dest{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:0;padding:1rem;background:var(--color-paper,#0b0f14);color:var(--color-body,#a3aab4);font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.75rem;letter-spacing:.04em}.ds-link{color:inherit;text-decoration:underline;text-decoration-color:var(--color-hairline,#586373);text-decoration-thickness:1px;text-underline-offset:.22em;transition:text-decoration-color 120ms ease,color 120ms ease}.ds-link:hover{color:var(--color-ink,#e8e6e1);text-decoration-color:var(--color-ink,#e8e6e1)}.ds-link:focus-visible{outline:2px solid var(--color-signal,#e8a33d);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Rail Identity",
+      "kind": "custom",
+      "refersTo": "nameplate",
+      "description": "Mono nameplate over serif tagline over mono standfirst: the two voices stated once.",
+      "html": "<div class=\"ds-rail\"><p class=\"ds-nameplate\">Anuj Rathee</p><p class=\"ds-tagline\">Mostly trying to work out how things actually work</p><p class=\"ds-standfirst\"><span>Software developer</span><span>Espoo, Finland</span></p></div>",
+      "css": ".ds-rail{background:var(--color-paper,#0b0f14);padding:1rem}.ds-nameplate{margin:0;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:1.9rem;font-weight:500;line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:var(--color-ink,#e8e6e1)}.ds-tagline{margin:1.25rem 0 0;font-family:var(--font-serif, Newsreader, Georgia, serif);font-size:1.375rem;line-height:1.34;max-width:20ch;color:var(--color-ink,#e8e6e1)}.ds-standfirst{margin:1.25rem 0 0;font-family:var(--font-mono, 'Azeret Mono', monospace);font-size:.6875rem;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:var(--color-muted,#818b96)}.ds-standfirst span{display:block}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument",
+    "overview": "The page is an instrument, not a document. Every piece of work on it is about making an exact quantity visible where there was a vague description, so the system is built from that: a cold blue-black ground that reads as glass, warm ink set against it, a single signal colour, and a scale drawn down the left of every list. On the home page the scale's gutter carries dates; on a case study the same gutter carries the measured result, so every problem stands beside its number.\n\nThe type system is two voices. Azeret Mono is the machine voice: the nameplate, section labels, dates, readings, stacks, destinations, commit hashes; anything the page measures or classifies. Newsreader is the human voice: anything written in the first person, every title, every paragraph. The tension is stated once at the top of the rail, mono nameplate over serif tagline, and repeated everywhere below.\n\nDensity is that of a well-set write-up: one reading column (42rem max) beside a sticky identity rail, generous section breaks, prose held to 54–58ch. There is one moving part on the page (the rail's rule growing into the section being read) and no decoration beyond hairlines and markers. Dark only; there is no light theme and nothing is conditional on `prefers-color-scheme`. Print is the one exception, and it exists for paper, not as a theme.",
+    "keyCharacteristics": [
+      "Blue-black instrument ground, warm ink, six tones plus one signal.",
+      "Amber means \"now\" and nothing else.",
+      "Mono measures and classifies; serif speaks.",
+      "A 1px axis with hollow markers is the signature, and its geometry lives in five shared tokens.",
+      "Flat: depth comes from tone and hairlines, never from shadow.",
+      "No footer; the last reading on the scale, \"Now\", closes every page."
+    ],
+    "rules": [
+      {
+        "name": "The Amber Means Now Rule",
+        "body": "Signal amber marks the current role, the current degree, the section being read, the focus ring, selection and the closing entry. If it ever appears on a link, a button or general emphasis, the system has broken. Links stay text-coloured with a hairline underline.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Light Variant Rule",
+        "body": "The ground is blue-black and stays blue-black. Every text tone is tuned to clear WCAG AA against it; a light theme would invalidate every ratio above.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Mono for anything the page measures or classifies; serif for anything written in the first person. Never set a sentence of prose in mono or a date in serif.",
+        "section": "typography"
+      },
+      {
+        "name": "The Label Is The Heading Rule",
+        "body": "A section's mono label is that section's heading (the h2), not a kicker above one. Nothing is stacked above a title: the opening band carries no label at all, and the case study's role, organisation and period sit under its title.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Uppercase Rule",
+        "body": "Uppercase belongs to the nameplate and the small mono roles (labels, meta, standfirsts). Serif is never uppercased, and readings never are.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Geometry Rule",
+        "body": "Gutter, gutter gap, axis, row padding and marker offset are defined once on `:root`. Change them there, never in an individual rule, or the labels, dates, axis and markers drift apart.",
+        "section": "layout"
+      },
+      {
+        "name": "The Glass Not Paper Rule",
+        "body": "Nothing lifts off the ground. If a new element seems to need a shadow to separate, it needs a hairline or a tone step instead.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** reserve Signal Amber for what is current: running roles, the section in view, the closing \"Now\", focus and selection.",
+      "**Do** mark links with the Hairline underline at rest (3.15:1) and let hover brighten to Warm Ink.",
+      "**Do** set anything measured or classified in Azeret Mono and anything written in the first person in Newsreader.",
+      "**Do** put a new list on the scale: axis, marker per entry, and its date or reading right-aligned in the 9rem gutter.",
+      "**Do** keep readings in their own case with tabular figures, at full ink.",
+      "**Do** align off-scale prose to the row-body edge from 48rem so the gutter only ever holds labels and readings.",
+      "**Do** change scale geometry only through `--gutter`, `--gutter-gap`, `--axis`, `--row-pad` and `--dot-y`.",
+      "**Do** pick spacing from the six steps, `2xs` through `xl`."
+    ],
+    "donts": [
+      "**Don't** put amber on a link, a button, or anything used for emphasis.",
+      "**Don't** add a light theme or anything conditional on `prefers-color-scheme`.",
+      "**Don't** stack a kicker or eyebrow above a heading. A section's mono label is its heading; standfirst lines go under the title.",
+      "**Don't** add drop shadows, gradients or tinted surfaces to separate things; use a hairline or a tone step.",
+      "**Don't** use bullets in lists of work; tick them with the hairline.",
+      "**Don't** add a footer; the closing \"Now\" row ends the page.",
+      "**Don't** add new Newsreader or Azeret weights; Newsreader is 400 only and Azeret 500 is for 11px uppercase roles and the nameplate.",
+      "**Don't** add a second moving part; the rail rule is the only motion, and all motion collapses under `prefers-reduced-motion`."
+    ]
+  }
+}

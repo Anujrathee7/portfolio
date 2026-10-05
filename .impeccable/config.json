@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-05T12:38:43.737Z",
+        "reason": "Claude triage: pre-existing .rail-rule nav marker (line 363), documented in globals.css as the page's one deliberate motion; its width growth intentionally pushes the label right, so a transform would change the design"
+      }
+    ]
+  }
+}
