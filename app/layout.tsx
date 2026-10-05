@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Azeret_Mono, Newsreader } from "next/font/google";
 import { site } from "./site";
@@ -84,6 +85,9 @@ export default function RootLayout({
           // Static object, no user input. Stringified once at build.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        {/* Cookieless page counts. A CV link tagged ?utm_source=<company>
+            shows up in the dashboard as a visit from that application. */}
+        <Analytics />
       </body>
     </html>
   );
