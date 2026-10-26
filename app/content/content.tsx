@@ -239,7 +239,32 @@ export const projects: Project[] = [
     blurb:
       "A three-page redesign pitch for Norrin, a Nordic enterprise AI consultancy.",
     stack: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    href: `${GH}/norrin-redesign`,
     live: "https://norrin-redesign.vercel.app",
+  },
+  {
+    id: "kesla",
+    name: "Kesla redesign",
+    year: "2026",
+    type: "Redesign concept",
+    blurb:
+      "A redesign concept for kesla.com, the Finnish maker of timber cranes and forestry machines, in English and Finnish.",
+    highlights: [
+      "Kept Kesla’s own yellow, black and cut corners, and cleaned up the layout page by page across ten pages.",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
+    href: `${GH}/kesla-redesign`,
+    live: "https://kesla-redesign.vercel.app",
+  },
+  {
+    id: "craftleap",
+    name: "CraftLeap redesign",
+    year: "2026",
+    type: "Redesign concept",
+    blurb:
+      "A redesign concept for CraftLeap, a production and inventory system for small Finnish machine shops, in English and Finnish.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    live: "https://craftleap.vercel.app",
   },
   {
     id: "desktop-client",
