@@ -24,8 +24,8 @@ Almost everything lives in **`app/content/content.tsx`**:
   (source, public repos only, since a private repo is a broken link for
   everyone else), `live` and `caseStudy`. `image` is optional and
   never a placeholder.
-- `workAuthorisation`, `close` and `contacts` — the end of the page and
-  the rail.
+- `close` and `contacts` — the end of the page and the rail. Work
+  authorisation is a line of `intro.standfirst`, so it shows in the rail.
 - `sections` — the rail's nav. The page passes `SectionNav` a list of
   observed sections that folds Education and Recognition into
   Experience, so scrolling up from Projects doesn't leave the wrong

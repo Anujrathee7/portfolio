@@ -62,7 +62,7 @@ production or performance claim on this site is something he can walk through li
 - RELEX challenge, AaltoAI Hackathon, September 2026: runner-up, team of three. Retrieval numbers in
   `Desktop/projects/applications/relex-hackathon-2026.md` and the relex-ai commit log.
 - Teknoware hackathon winner, 2025. LUT Excellence Academic Scholarship (60% of tuition).
-- Letterly: live app, 163 automated checks, one real screenshot in `public/work/`.
+- Redesigns live on Vercel: Norrin (freelance pitch), Kesla and CraftLeap (concepts).
 - Absent and not to be fabricated: testimonials, team-wide outcomes not attributable to Anuj, any
   repo for the desktop agent client or the delegation workflow.
 

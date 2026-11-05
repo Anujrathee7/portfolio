@@ -10,7 +10,6 @@ import {
   projects,
   recognition,
   sections,
-  workAuthorisation,
   type Project,
   type Role,
 } from "./content/content";
@@ -71,8 +70,6 @@ export default function Page() {
           <div className="rows">
             <RoleRow role={education} />
           </div>
-
-          <p className="note work-auth">{workAuthorisation}</p>
         </section>
 
         <section

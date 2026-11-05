@@ -185,7 +185,7 @@ A sticky identity rail beside a scrolling column of sections. Below 69rem it is 
 
 **The scale.** Each list is drawn as a 1px axis with a marker per entry. Below 48rem the axis runs down the left edge and the date sits above each entry. From 48rem each row becomes a two-column grid: a `{spacing.gutter}` gutter, a `{spacing.gutter-gap}` gap, and the body. The axis sits `{spacing.axis}` into that gap from the body edge; dates sit right-aligned flush against it, and section labels are right-aligned in the same gutter width, so the whole left edge reads as one column of readings. Rows abut and each carries `{spacing.row-pad}` above and below, so the axis draws as one unbroken line overshooting the first and last marker by one row's padding.
 
-**Off-scale content aligns to the body edge.** Prose that belongs to a labelled section but is not a list of entries (ownership) and the work-authorisation note are indented by `gutter + gutter-gap` from 48rem, so the gutter stays a column of labels and readings and nothing else.
+**Off-scale content aligns to the body edge.** Prose that belongs to a labelled section but is not a list of entries (ownership) is indented by `gutter + gutter-gap` from 48rem, so the gutter stays a column of labels and readings and nothing else.
 
 **Spacing.** Six steps about 1.6x apart, `{spacing.2xs}` through `{spacing.xl}`, so each gap is unmistakably different from its neighbours. Sections open with `l`, rising to `xl` at 69rem; a continuation (Education and Recognition after Experience, Ownership after Overview) opens with `m`, rising to `l`.
 
