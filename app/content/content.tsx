@@ -33,7 +33,7 @@ export type Project = {
   live?: string;
   /** Slug of a page under /work. */
   caseStudy?: string;
-  /** Only Letterly has a real screenshot. Optional, never a placeholder. */
+  /** A real capture of the thing. Optional, never a placeholder. */
   image?: {
     src: string;
     alt: string;
@@ -63,7 +63,7 @@ export const intro = {
   /** The one line of first-person voice in the rail. */
   tagline: "Mostly trying to work out how things actually work",
   /** Pure fact, set in mono. The rail says it once so the page never does. */
-  standfirst: ["Software developer", "Espoo, Finland"],
+  standfirst: ["Software developer", "Espoo, Finland", "Right to work in Finland"],
 };
 
 /**
@@ -72,7 +72,7 @@ export const intro = {
  */
 export const opening = {
   lede:
-    "I write software. At the moment that mostly means making sure two things describing the same object don’t quietly start disagreeing.",
+    "I write software. Right now that means making a sports-facility platform fast and keeping its data honest, from the database up to the screen.",
   rest:
     "The rest of it is the gym, music more or less constantly, cooking for whoever turns up, and sitting by the sea until the sun has finished going down, which produces nothing at all.",
 };
@@ -89,9 +89,7 @@ export const experience: Role[] = [
       "A platform that helps sports facilities run fields, equipment and soil health from one place. I own the front end, the database and deployment.",
     highlights: [
       "Cut a year of soil readings from 2.1 s to 79 ms by rewriting 127 security policies and adding indexes.",
-      "Connected Soil Scout sensors with an hourly sync and three years of backfilled history.",
       "Shrank a year-long chart from 33 MB to 0.43 MB by rolling old readings into daily values.",
-      "Built a map of real field boundaries in Mapbox and PostGIS, with tasks created from the map.",
       "Wrote 109 Playwright tests for desktop and phone against a real local database.",
     ],
   },
@@ -101,10 +99,7 @@ export const experience: Role[] = [
     title: "Web Developer",
     period: "2026",
     summary:
-      "Client and pitch work, alongside the tools in the projects list below.",
-    highlights: [
-      "Designed and built a redesign pitch for Norrin, a Nordic enterprise AI consultancy.",
-    ],
+      "Redesign pitches and concepts for Nordic companies. Three of them are live under Projects.",
   },
   {
     id: "teaching",
@@ -126,7 +121,6 @@ export const experience: Role[] = [
       "An AI brand-visibility platform with real users, around 500 a month and 10,000 API requests a week.",
     highlights: [
       "Built the JWT authentication, password hashing and the REST endpoints behind its generative AI response analysis.",
-      "Validated and reshaped incoming data before it reached PostgreSQL.",
       "Sped up slow queries with missing indexes and leaner joins.",
     ],
   },
@@ -140,7 +134,6 @@ export const experience: Role[] = [
     highlights: [
       "Acted as Scrum master, working with the product owner to map out the scope and requirements.",
       "Delivered a working MVP the product owner demos to the business.",
-      "Set up the team’s coding convention and pull request workflow.",
     ],
   },
 ];
@@ -161,9 +154,8 @@ export const recognition: Role[] = [
     org: "AaltoAI Hackathon",
     title: "Runner-up, RELEX Solutions challenge",
     period: "Sep 2026",
-    caseStudy: "relex",
     summary:
-      "Second place in a team of three, for a tool that answers questions about a document archive and shows the exact quote behind every answer.",
+      "Second place in a team of three, for Memory With a Receipt, listed under Projects.",
   },
   {
     id: "teknoware",
@@ -197,39 +189,18 @@ export const projects: Project[] = [
     href: `${GH}/relex-ai`,
   },
   {
-    id: "letterly",
-    name: "Letterly",
+    id: "kesla",
+    name: "Kesla redesign",
     year: "2026",
-    type: "Web app",
+    type: "Redesign concept",
     blurb:
-      "A cover letter builder that runs in the browser and exports a real PDF with selectable text.",
+      "A redesign concept for kesla.com, the Finnish maker of timber cranes and forestry machines, in English and Finnish.",
     highlights: [
-      "Kept the live preview and the PDF identical, with tests that measure the finished PDF.",
-      "163 automated checks across the editor, templates and PDF.",
+      "Kept Kesla’s own yellow, black and cut corners, and rebuilt the layout across ten pages.",
     ],
-    stack: ["TypeScript", "Next.js", "react-pdf", "Playwright"],
-    href: `${GH}/Letterly`,
-    live: "https://getletterly.vercel.app",
-    image: {
-      src: "/work/letterly-editor.png",
-      alt: "The Letterly editor: a list of content blocks on the left, an A4 page preview in the middle showing a finished cover letter, and a settings panel on the right.",
-      caption: "The editor. The middle pane is an A4 page at real size, and the PDF matches it.",
-      width: 1440,
-      height: 900,
-    },
-  },
-  {
-    id: "visual-editor",
-    name: "Source-Mapped Visual Editor",
-    year: "2026",
-    type: "Developer tool",
-    blurb:
-      "A visual editor for React that hands each change to a coding agent and checks the result.",
-    highlights: [
-      "Tagged every element with its exact source location, so the agent edits the right line first time.",
-    ],
-    stack: ["TypeScript", "React", "Vite", "Babel"],
-    href: `${GH}/source-mapped-visual-editor`,
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
+    href: `${GH}/kesla-redesign`,
+    live: "https://kesla-redesign.vercel.app",
   },
   {
     id: "norrin",
@@ -241,20 +212,6 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     href: `${GH}/norrin-redesign`,
     live: "https://norrin-redesign.vercel.app",
-  },
-  {
-    id: "kesla",
-    name: "Kesla redesign",
-    year: "2026",
-    type: "Redesign concept",
-    blurb:
-      "A redesign concept for kesla.com, the Finnish maker of timber cranes and forestry machines, in English and Finnish.",
-    highlights: [
-      "Kept Kesla’s own yellow, black and cut corners, and cleaned up the layout page by page across ten pages.",
-    ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
-    href: `${GH}/kesla-redesign`,
-    live: "https://kesla-redesign.vercel.app",
   },
   {
     id: "craftleap",
@@ -278,39 +235,7 @@ export const projects: Project[] = [
     ],
     stack: ["Rust", "Tauri 2.0", "TypeScript"],
   },
-  {
-    id: "garbage-classifier",
-    name: "Garbage classifier",
-    year: "2025",
-    type: "ML service",
-    blurb:
-      "An image model behind a Flask API that sorts rubbish into twelve classes.",
-    stack: ["Python", "TensorFlow", "Flask"],
-  },
-  {
-    id: "cv-matcher",
-    name: "CV matcher",
-    year: "2025",
-    type: "Hackathon",
-    blurb:
-      "Ranks CVs against a job description by meaning. I wrote the text extraction.",
-    stack: ["Python", "sentence-transformers"],
-  },
-  {
-    id: "platformer",
-    name: "Platformer",
-    year: "2024",
-    type: "Browser game",
-    blurb:
-      "A browser platformer with a tilemap level, bounce pads and spiders.",
-    stack: ["JavaScript", "Phaser"],
-    href: `${GH}/Phaser-Game`,
-  },
 ];
-
-/** Straight off the CV. Boring, and the first thing a recruiter checks. */
-export const workAuthorisation =
-  "Finnish residence permit. Right to work in Finland, no employer sponsorship needed.";
 
 /** The last entry on the scale, and the only one that is not a date. */
 export const close = {

@@ -694,17 +694,6 @@ p {
   max-width: 52ch;
 }
 
-.work-auth {
-  margin-top: var(--space-m);
-  max-width: 46ch;
-}
-
-@media (min-width: 48rem) {
-  .work-auth {
-    margin-left: calc(var(--gutter) + var(--gutter-gap));
-  }
-}
-
 /* ---------------------------------------------------------------
    The close. There is no footer, so the last entry on the scale has
    to be the ending. Its reading is "now" — the same amber the current
